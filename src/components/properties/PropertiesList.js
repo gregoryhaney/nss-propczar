@@ -28,9 +28,15 @@ export const PropertiesList = () => {
         {
             properties.map(
                 (property) => {
-                    return <div key={`propertyObj--${property.id}`}>
-                        <p>Property at {property.address} rents for ${property.rentAmt}.</p>
-
+                    return <div key={`property--${property.id}`}>
+                        <article className="propertyCard">
+                        <p> Address: {property.address}<br></br>
+                            Rent: ${property.rentAmt}.<br></br>
+                            Tenant: {property.tenantId.name}.
+                            Property Manager: {property.mgrId.name}.<br></br>
+                            Occupied: {property.occupied}<br></br>                                                                     
+                        </p>
+                        </article> 
                     </div>
                 }
             )        
@@ -38,3 +44,4 @@ export const PropertiesList = () => {
         </>
     )
 }
+
