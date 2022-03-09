@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom"
 import { PropertiesList } from "./Properties/PropertiesList";
 import { UsersList } from "./Users/UsersList";
-import { PropertyManagement } from "./Properties/PropertiesManagement";
+import { PropertyManagement } from "./Properties/PropertyManagement";
 
 
 export const ApplicationViews = () => {
