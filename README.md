@@ -15,7 +15,7 @@ The idea for PropCzar came from seeing my mother struggle with keeping track of 
 ### ERD Image
 
 
-# How this Application Was Developed
+## How this Application Was Developed
 PropCzar was developed with a painstaking, methodical approach with a ton of up-front planning. I started with rough, hand-drawn sketches of what the UI would look like and what would happen when the user clicked certain buttons/links. From those sketches, I created wireframes in Sketchboard, which are included in this README. I then created an ERD which is also shown in this README. Next, I planned out the modules/components I would need and then created the application through React. Once the modules were built, I began psuedo-coding in each. I laid out what the purpose for each module/component would be, keeping in mind the single responsibility principle. Once that was completed, I wrote the algorithms to solve the problems at hand, and finished by writing the code.
 
 In addition to writing the code, I used the Chrome developer/debugging tools extensively.
@@ -23,12 +23,11 @@ In addition to writing the code, I used the Chrome developer/debugging tools ext
 ## Installing and Running this Application
 PropCzar is a React application. After downloading the files to your local machine, including the associated json database file (database.json):
 1. in the project directory, run: `npm start `
-  a. this starts the application and will open a browser tab to the application
-  b. unless there is a port conflict, it will generally run on port 3000:
-  c. http://localhost:3000
-2. you may elect to watch lint errors in the console by running: `npm test`
-3. you will also need to run the json server for the database.
-  a. from the directory to which you've downloaded the `database.json` file, run: `json-server -p 8080 -w database.json`
+2. this starts the application and will open a browser tab to the application
+3. unless there is a port conflict, it will generally run on port 3000. [ http://localhost:3000 ]
+4. you may elect to watch lint errors in the console by running: `npm test`
+5. you will also need to run the json server for the database.
+6. from the directory to which you've downloaded the `database.json` file, run: `json-server -p 8080 -w database.json`
   
   
 ## Difficulties and Challenges faced during this Process
