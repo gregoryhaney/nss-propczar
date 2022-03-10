@@ -29,8 +29,8 @@ export const MaintenanceRequestsList = () => {
                 (request) => {
                     return <div className="maintrequest" key={`maintrequest--${request.id}`}>                        
                         <p> Address: {request.property.address}<br></br>
-                            Request Title: {request.title}.<br></br>
-                            Request Description: {request.description}<br></br>
+                            Title: {request.title}.<br></br>
+                            Description: {request.description}<br></br>
                             Still Open?: {request.openStatus}<br></br>
                             When Opened: {request.dateOpened}<br></br>  
                             When Closed: {request.dateClosed}<br></br>
