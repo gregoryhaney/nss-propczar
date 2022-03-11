@@ -13,6 +13,7 @@ The idea for PropCzar came from seeing my mother struggle with keeping track of 
 
 
 ### ERD Image
+![PropCzar_ERD](https://user-images.githubusercontent.com/10354411/157886161-7e0fb8fc-1426-420a-96db-4a47d5a4f911.jpeg)
 
 
 ## How this Application Was Developed
