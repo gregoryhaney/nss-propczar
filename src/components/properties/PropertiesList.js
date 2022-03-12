@@ -33,6 +33,7 @@ export const PropertiesList = () => {
         {
             properties.map(
                 (property) => {
+                    
                     let occupiedStatus = ""
                     if (property.occupied === true || property.occupied === 'true') {
                          occupiedStatus = "YES"
@@ -41,20 +42,17 @@ export const PropertiesList = () => {
                     return <div key={`property--${property.id}`}>
                         <article className="propertyCard">
                             <section className="propertyImage">
-
-                           "PROPERTY IMAGE at {property.address}"
-
+                                <img src={property.imageURL} />
                             </section>
 
                             <section className="propertyData">
-                            <p> Address: {property.address}<br></br>
-                                Rent: ${property.rentAmt}<br></br>
-                                Tenant: {property.user.name}<br></br>
-                                Property Manager: {property.mgrId.name}<br></br>
-                                Occupied: {occupiedStatus}<br></br>                                                                     
-                            </p>
+                                <p> Address: {property.address}<br></br>
+                                    Rent: ${property.rentAmt}<br></br>
+                                    Tenant: {property.user.name}<br></br>
+                                    Property Manager: {property.mgrId.name}<br></br>
+                                    Occupied: {occupiedStatus}<br></br>                                                                     
+                                </p>
                             </section>
-
                         </article> 
                     </div>
                 }

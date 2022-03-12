@@ -1,3 +1,13 @@
+/*
+    The purpose of this component is to create a new user
+    object in the DB. A three-question form is presented to the
+    user:
+        1. User's full name
+        2. User's email address
+        3. User's role ("owner", "manager", "tenant")
+    This is called by the route: "/UserForm"
+*/
+
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
 
@@ -29,7 +39,7 @@ export const UserForm = () => {
                 }
                 return fetch("http://localhost:8080/users", fetchOption)
                     .then(() => {
-                        history.push("/users")
+                        history.push("/userManagement")
                     })
 
     }

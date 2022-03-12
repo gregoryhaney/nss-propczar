@@ -1,14 +1,11 @@
 /*
     The purpose of this component is generate the HTML (JSX)
     that will list the maintenance requests.
+    This is called by route: "/maintRequests"
     
 */
 import React, { useEffect, useState } from "react"
-
 import { useHistory } from "react-router-dom"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min"
-
-
 
 export const MaintenanceRequestsList = () => {
     const [requests, setRequests] = useState([])
@@ -57,7 +54,7 @@ export const MaintenanceRequestsList = () => {
                             When Opened: {request.dateOpened}<br></br>  
                             When Closed: {request.dateClosed}<br></br>
                             Repair Notes: {request.repairNotes}<br></br> 
-
+                            <br></br>
                             <button onClick={() => {
                                 history.push(`EditRequest/${request.id}`)
                             }}>Edit Request</button> 

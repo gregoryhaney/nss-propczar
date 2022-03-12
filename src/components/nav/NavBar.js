@@ -15,7 +15,13 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/propertyManagement">Property Management</Link>
             </li>
             <li className="navbar__item">
+                <Link className="navbar__link" to="/PropertyForm">Owner: Create Property</Link>
+            </li>
+            <li className="navbar__item">
                 <Link className="navbar__link" to="/maintRequests">Maintenance Requests</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/MaintRequestForm">Tenant: Create Maintenance Request</Link>
             </li>
 
             <li className="navbar__item">

@@ -3,7 +3,8 @@
     an update to the DB for an individual user.
     The FN "EditUser" is called when the user clicks
     the "Edit User" button from the "UsersList.js"
-    component.     
+    component. 
+    This is called by the route: "/EditUser"    
 */
 
 import React, { useEffect, useState } from "react"
@@ -66,9 +67,7 @@ export const EditUser = () => {
                 <hr className="rounded"></hr> 
                 <form className="editUserForm">
                 <h2 className="editUserForm__title">Edit an Existing User</h2>
-   
-
-               
+                  
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="name">User's Name:</label>
@@ -128,7 +127,7 @@ export const EditUser = () => {
                         </div>
                     </fieldset> 
         
-        
+                    <br></br>
                     <button onClick={makeTheUpdate} className="btn btn-primary">
                         Save Changes
                     </button>

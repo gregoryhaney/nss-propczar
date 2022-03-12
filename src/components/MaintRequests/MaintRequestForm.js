@@ -2,6 +2,7 @@
     The purpose of this component is to provide the
     form to be used by a tenant to create a new
     maintenance request.
+    This is called by route: "/MaintRequestForm"
 */
 
 import React, { useEffect, useState } from "react"
@@ -15,7 +16,8 @@ export const MaintRequestForm = () => {
     });
     
     const history = useHistory()
-
+    const currentLoggedInUser = localStorage.getItem("propczar_user")
+    
         // build the object that will be sent via API when form is submitted
             // use the preventDefault to prevent default browser behavior
             // after the form is submitted
@@ -57,10 +59,14 @@ export const MaintRequestForm = () => {
                 })
             }
         
-            // fetch the properties to use in the form's dropdown
+            // fetch the property to use in the form's dropdown
+            // this fetch is qualified with the variable "currentLoggedInUser",
+            // which is set to the value from localStorage for "propczar_user".
+            // it shows only the user's address in the dropdown to prevent
+            // the user from opening maint requests on other tenants' properties
             useEffect(
                 () => {
-                    fetch("http://localhost:8080/properties?_sort=address")
+                    fetch(`http://localhost:8080/properties?userId=${currentLoggedInUser}`)
                     .then(res => res.json())
                     .then((propertiesArray) => {
                         setProperties(propertiesArray)
@@ -68,7 +74,6 @@ export const MaintRequestForm = () => {
                 },
                 []
             )
-
 
     /*
         The 'return' block contains the three-part form for submitting a
@@ -148,7 +153,7 @@ export const MaintRequestForm = () => {
             </fieldset>
 
 
-
+            <br></br>
             <button onClick={addNewRequest} className="btn btn-primary">
                 Submit Request
             </button>

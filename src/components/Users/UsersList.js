@@ -1,8 +1,14 @@
 /*
-    The purpose of this component is generate the HTML (JSX)
-    that will list the users.
-    
+    The purposes of this component are:
+    1. generate the HTML (JSX) that will list the users.
+    2. provide a "Create New User" button at the top of the page
+        a. it will go to route: "/UserForm"
+    3. provide an "Edit User" and "Delete User" button
+    for each user.
+        a. "Edit User" goes to route "/EditUser" 
+        b. "Delete User" performs the "deleteUser" FN within this component
 */
+
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { UserForm } from "./UserForm" 
@@ -16,9 +22,9 @@ export const UsersList = () => {
         } else {
             fetch(`http://localhost:8080/users/${id}`, {
             method: "DELETE"
-        })
+         })
             .then(getUsers())
-    }
+        }
     }
 
     const history = useHistory()
@@ -40,16 +46,24 @@ export const UsersList = () => {
         },
         []
     )
-
+            // add button at top of page to CREATE NEW USER
             // display simple user list
             // add button under each user to EDIT
-            // add button under each user to DELETE
-            // add button at bottom of page to CREATE NEW USER
+            // add button under each user to DELETE            
 
     return (
         
         <>
-              <hr className="rounded"></hr>                         
+              <hr className="rounded"></hr>
+              
+                <h2>Create a New User</h2>
+                <article className="newUser">
+                    <button onClick={() => {                
+                        history.push(`UserForm`)
+                            }}>Create New User</button> 
+                            <br></br> 
+                            <hr className="rounded"></hr>  
+                </article>                     
         {
             
             users.map(
@@ -57,11 +71,11 @@ export const UsersList = () => {
                     return <div key={`userObj--${user.id}`}>
                         <article className="userCard">
                             <p>{user.name} is a property {user.role}.<br></br>
-
+                            <br></br>
                             <button onClick={() => {
                                 history.push(`EditUser/${user.id}`)
                             }}>Edit User</button> 
-
+                            
                             <button onClick={() => {
                                 deleteUser(user.id)                                
                             }}>Delete User</button>
@@ -72,13 +86,6 @@ export const UsersList = () => {
             ) 
                    
         }
-         <hr className="rounded"></hr>
-         <h2>Create a New User</h2>
-         <article className="newUser">
-            <button onClick={() => {                
-                UserForm()
-                    }}>Create New User</button>
-         </article>
         </>
     )
 }

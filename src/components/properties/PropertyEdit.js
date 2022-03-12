@@ -47,16 +47,17 @@ export const EditProperty = () => {
     )
 
         
-        // editProperty object builder goes here
+        // edProperty object builder goes here
         const edProperty = {
             mgrId: property.mgrId,
             userId: property.userId,
             rentAmt: property.rentAmt,
-            occupied: property.occupied
+            occupied: property.occupied,
+            imageURL: property.imageURL
         }
 
         const makeTheUpdate = () => {
-        // POST action of edited property object goes here
+        // PATCH action of edited property object goes here
         const fetchOption = {
             method: "PATCH",
             headers: {
@@ -92,11 +93,12 @@ export const EditProperty = () => {
                         }}>
                             <option value="0">Select the manager...</option>
                                 {users.map(mgruser => {                                
-                                    return <option value={mgruser.id}>
-                                        {mgruser.name}
-                            </option>
-                                                    
-                                })}   
+                                    if (mgruser.role === "owner" || mgruser.role === "manager") {                              
+                                        return <option value={mgruser.id}>
+                                            {mgruser.name}
+                                </option>
+                                                        
+                                    }})}   
                         </select>
                     </div>
                     </fieldset>
@@ -114,16 +116,15 @@ export const EditProperty = () => {
                             }}>
                                 <option value="0">Select the tenant...</option>
                                     {users.map(user => {
-                                        return <option value={user.id}>
-                                            {user.name}
-                                            </option>                        
-                                    })}   
+                                        if (user.role === "tenant") {
+                                            return <option value={user.id}>
+                                                {user.name}
+                                              
+                                                </option>                        
+                                        }})}   
                             </select>
                         </div>
                     </fieldset>
-
-
-
 
 
 
@@ -146,10 +147,7 @@ export const EditProperty = () => {
                         </div>
                     </fieldset>
     
-    
-                   
-        
-        
+                        
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="occupied">Occupied?</label>
@@ -170,7 +168,28 @@ export const EditProperty = () => {
                     </fieldset>
         
         
-        
+                    <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="imageURL">URL for Image:</label>
+                        <input
+                            onChange={
+                                (evt) => {
+                                    const copy = {...property}
+                                    copy.imageURL = evt.target.value
+                                    updateProperty(copy)
+                                }
+                            }
+                            required autoFocus
+                            type="text"
+                            className="form-control"
+                            placeholder="example: https://images.pexels.com/photos/8484848484848......"
+                            />
+                    </div>
+                </fieldset>
+
+
+
+                     <br></br>
                     <button onClick={makeTheUpdate} className="btn btn-primary">
                         Update Property
                     </button>

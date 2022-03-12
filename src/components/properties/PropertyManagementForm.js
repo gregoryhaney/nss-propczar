@@ -1,11 +1,8 @@
 /*
     The purpose of this component is to provide the
-    form to be used for modifying or deleting existing properties,
-    or adding a new property to the inventory.
+    form for adding a new property to the inventory.
 
-    The actual updates to the DB will be handled by the
-    component "PropertyManagement.js"
-
+    The is called by the route: "/PropertyForm"
 */
 
 import React, { useEffect, useState } from "react"
@@ -40,7 +37,8 @@ export const PropertyForm = () => {
                     address: property.address,
                     mgrId: property.mgrId,
                     rentAmt: property.rentAmt,
-                    occupied: property.occupied
+                    occupied: property.occupied,
+                    imageURL: property.imageURL
                 }
         
             const fetchOption = {
@@ -115,12 +113,13 @@ export const PropertyForm = () => {
                                 updateProperty(copy)
                     }}>
                         <option value="0">Select the manager...</option>
-                            {users.map(mgruser => {                                
+                            {users.map(mgruser => {  
+                                if (mgruser.role === "owner" || mgruser.role === "manager") {                              
                                 return <option value={mgruser.id}>
                                     {mgruser.name}
                         </option>
                                                 
-                            })}   
+                            }})}   
                     </select>
                 </div>
                 </fieldset>
@@ -139,10 +138,12 @@ export const PropertyForm = () => {
                     }}>
                         <option value="0">Select the tenant...</option>
                             {users.map(user => {
+                                if (user.role === "tenant") {
                                 return <option value={user.id}>
                                     {user.name}
+                                  
                                     </option>                        
-                            })}   
+                            }})}   
                     </select>
                 </div>
             </fieldset>
@@ -167,8 +168,27 @@ export const PropertyForm = () => {
                 </div>
             </fieldset>
 
+            <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="imageURL">URL for Image:</label>
+                        <input
+                            onChange={
+                                (evt) => {
+                                    const copy = {...property}
+                                    copy.imageURL = evt.target.value
+                                    updateProperty(copy)
+                                }
+                            }
+                            required autoFocus
+                            type="text"
+                            className="form-control"
+                            placeholder="example: https://images.pexels.com/photos/8484848484848......"
+                            />
+                    </div>
+                </fieldset>
 
 
+            <br></br>
             <button onClick={addNewProperty} className="btn btn-primary">
                 Add Property
             </button>

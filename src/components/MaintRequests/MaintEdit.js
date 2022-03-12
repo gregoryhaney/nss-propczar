@@ -3,7 +3,8 @@
     an update to the DB for a maintenance request.
     The FN "EditRequests" is called when the user clicks
     the "Edit Request" button from the "MaintRequests.js"
-    component.     
+    component. 
+    This is called by the route: "/EditRequest"    
 */
 
 import React, { useEffect, useState } from "react"
@@ -34,9 +35,8 @@ export const EditRequest = () => {
         },
         []
     )
-
         
-        // editRequest object builder
+        // edRequest object builder
         const edRequest = {
             title: request.title,
             description: request.description,
@@ -47,7 +47,7 @@ export const EditRequest = () => {
         }
 
         const makeTheUpdate = () => {
-        // POST action of edited request object
+        // PATCH action of edited request object
         const fetchOption = {
             method: "PATCH",
             headers: {
@@ -193,7 +193,7 @@ export const EditRequest = () => {
                     </fieldset>
 
 
-        
+                    <br></br>
                     <button onClick={makeTheUpdate} className="btn btn-primary">
                         Save Changes
                     </button>
@@ -201,52 +201,3 @@ export const EditRequest = () => {
                 </>
         )
 }
-
-
-
-
-
-/*
- <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="managerAssigned">Manager:</label>
-                        <select defaultValue={'0'}
-                            onChange={
-                                (evt) => {
-                                    const copy = {...property}
-                                    copy.mgrId = parseInt(evt.target.value)
-                                    updateProperty(copy)
-                        }}>
-                            <option value="0">Select the manager...</option>
-                                {users.map(mgruser => {                                
-                                    return <option value={mgruser.id}>
-                                        {mgruser.name}
-                            </option>
-                                                    
-                                })}   
-                        </select>
-                    </div>
-                    </fieldset>
-
-
-<fieldset>
-                        <div className="form-group">
-                            <label htmlFor="tenant">Tenant:</label>
-                            <select defaultValue={'0'}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...property}
-                                        copy.userId = parseInt(evt.target.value)
-                                        updateProperty(copy)
-                            }}>
-                                <option value="0">Select the tenant...</option>
-                                    {users.map(user => {
-                                        return <option value={user.id}>
-                                            {user.name}
-                                            </option>                        
-                                    })}   
-                            </select>
-                        </div>
-                    </fieldset>
-
-*/
