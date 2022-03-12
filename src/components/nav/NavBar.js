@@ -28,6 +28,7 @@ export const NavBar = () => {
                 >Logout</Link>
             </li>
         </ul>
+        
     )
 }
 

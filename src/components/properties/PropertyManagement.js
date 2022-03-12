@@ -9,58 +9,65 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { PropertyForm } from "./PropertyManagementForm.js"
-
-
-const editProperty = (id) => {
-    PropertyForm()
-}
-
 
 export const PropertyManagement = () => {
-    const [property, setProperty] = useState([])
-    const [properties, setProperties] = useState([])
     const history = useHistory()
-
-    // const editProperty = (property.id) => {
-    //     PropertyForm()
-    // }
-
-    useEffect(
-        () => {
-            fetch("http://localhost:8080/properties")
-            .then(res => res.json())
-            .then((propertiesArray) => {
-                setProperties(propertiesArray)
-            })
-        },
-        []
-    )
-
-
+    const [properties, setProperties] = useState([])
     
 
-
-return (
-    <>
-    {
-        properties.map(
-            (property) => {
-                return <div key={`property--${property.id}`}>
-                    <p>{property.address}
-                    <button onClick={() => {
-                            editProperty(property.id)
-                         }}>Edit Property</button> 
-                    </p>
-
-                </div>
+            const deleteProperty = (id) => {        
+                    fetch(`http://localhost:8080/properties/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(getProperties())
             }
-        )        
-    }
-    </>
-)
+        
+            const getProperties = () => {
+            
+                    fetch("http://localhost:8080/properties")
+                    .then(res => res.json())
+                    .then((propertiesArray) => {
+                        setProperties(propertiesArray)
+                    })
+            }
+
+        
+    
+        // get all properties from DB via API Fetch
+        useEffect(
+            () => {
+               getProperties()
+            },
+            []
+        )    
 
 
+    return (
+        <>
+        <hr className="rounded"></hr> 
+        {
+            properties.map(
+                (property) => {
+                    return <div key={`property--${property.id}`}>
+                        <article className="userCard">
+                        <p>{property.address} <br></br>
 
+                        <button onClick={() => {
+                               
+                                history.push(`EditProperty/${property.id}`)
+                            }}>Edit Property</button> 
+
+                        <button onClick={() => {
+                                deleteProperty(property.id)                            
+                            }}>Delete Property</button>
+                        </p>
+                        </article>
+
+                    </div>
+                }
+            )        
+        }
+        </>
+    )
 
 }

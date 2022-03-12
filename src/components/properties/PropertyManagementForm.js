@@ -10,28 +10,19 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
-import { UsersList } from "../Users/UsersList";
 
-export const PropertyForm = (id) => {
-    const [properties, setProperties] = useState([])
 
-    const [property, updateProperty] = useState({
-        tenantId: "",
-        address: "",
-        mgrId: "",
-        rentAmt: "",
-        occupied: false
-    });
+export const PropertyForm = () => {
+    const [users, setUsers] = useState([])
+    const [property, updateProperty] = useState({})
     const history = useHistory()
-
-
 
     useEffect(
         () => {
-            fetch("http://localhost:8080/properties")
+            fetch("http://localhost:8080/users")
             .then(res => res.json())
-            .then((propertiesArray) => {
-                setProperties(propertiesArray)
+            .then((usersArray) => {
+                setUsers(usersArray)
             })
         },
         []
@@ -45,7 +36,7 @@ export const PropertyForm = (id) => {
 
             
                 const newProperty = {
-                    tenantId: property.tenantId,
+                    userId: property.userId,
                     address: property.address,
                     mgrId: property.mgrId,
                     rentAmt: property.rentAmt,
@@ -55,18 +46,20 @@ export const PropertyForm = (id) => {
             const fetchOption = {
                 method: "POST",
                 headers: {
-                    "Content-Type": "applications/json"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(newProperty)
             }
             return fetch("http://localhost:8080/properties", fetchOption)
                 .then(() => {
-                    history.push("/properties")
+                    history.push("/propertyManagement")
                 })
             }
         
 
     return (
+        <>
+            <hr className="rounded"></hr> 
             <form className="newPropertyForm">
             <h2 className="newPropertyForm__title">Add New Property to the Inventory</h2>
 
@@ -122,14 +115,15 @@ export const PropertyForm = (id) => {
                                 updateProperty(copy)
                     }}>
                         <option value="0">Select the manager...</option>
-                            {properties.map(property => {
-                                return <option value={property.mgrId}>
-                                    {UsersList.name}
-                                    </option>                        
+                            {users.map(mgruser => {                                
+                                return <option value={mgruser.id}>
+                                    {mgruser.name}
+                        </option>
+                                                
                             })}   
                     </select>
                 </div>
-            </fieldset>
+                </fieldset>
 
 
 
@@ -140,13 +134,13 @@ export const PropertyForm = (id) => {
                         onChange={
                             (evt) => {
                                 const copy = {...property}
-                                copy.tenantId = parseInt(evt.target.value)
+                                copy.userId = parseInt(evt.target.value)
                                 updateProperty(copy)
                     }}>
                         <option value="0">Select the tenant...</option>
-                            {properties.map(property => {
-                                return <option value={property.tenantId}>
-                                    {property.name}
+                            {users.map(user => {
+                                return <option value={user.id}>
+                                    {user.name}
                                     </option>                        
                             })}   
                     </select>
@@ -179,8 +173,7 @@ export const PropertyForm = (id) => {
                 Add Property
             </button>
         </form>
-
+        </>
     )
-
 
 }

@@ -12,7 +12,7 @@ export const PropertiesList = () => {
     // get all properties from DB via API Fetch
     useEffect(
         () => {
-            fetch("http://localhost:8080/properties")
+            fetch("http://localhost:8080/properties?_expand=user")
             .then(res => res.json())
             .then((propertiesArray) => {
                 setProperties(propertiesArray)
@@ -23,19 +23,38 @@ export const PropertiesList = () => {
 
 // INITIAL FUNCTIONALITY:  Show basic HTML for now
 
+        // TODO
+        // to get the value for Property Manager, need 
+        // a .filter() or .find()
+
     return (
         <>
+        <hr className="rounded"></hr> 
         {
             properties.map(
                 (property) => {
+                    let occupiedStatus = ""
+                    if (property.occupied === true || property.occupied === 'true') {
+                         occupiedStatus = "YES"
+                    } else
+                    {  occupiedStatus = "NO"}
                     return <div key={`property--${property.id}`}>
                         <article className="propertyCard">
-                        <p> Address: {property.address}<br></br>
-                            Rent: ${property.rentAmt}.<br></br>
-                            Tenant: {property.tenantId.name}.
-                            Property Manager: {property.mgrId.name}.<br></br>
-                            Occupied: {property.occupied}<br></br>                                                                     
-                        </p>
+                            <section className="propertyImage">
+
+                           "PROPERTY IMAGE at {property.address}"
+
+                            </section>
+
+                            <section className="propertyData">
+                            <p> Address: {property.address}<br></br>
+                                Rent: ${property.rentAmt}<br></br>
+                                Tenant: {property.user.name}<br></br>
+                                Property Manager: {property.mgrId.name}<br></br>
+                                Occupied: {occupiedStatus}<br></br>                                                                     
+                            </p>
+                            </section>
+
                         </article> 
                     </div>
                 }

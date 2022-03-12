@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
 
 export const UserForm = () => {   
-
+    
     const [user, updateUser] = useState({
         name: "",
         email: "",
@@ -35,6 +35,8 @@ export const UserForm = () => {
     }
 
         return (
+            <>
+                <hr className="rounded"></hr> 
                 <form className="newUserForm">     
                 <h2 className="newUserForm__title">New User</h2>
 
@@ -104,5 +106,6 @@ export const UserForm = () => {
                 </button>
 
                 </form>
+            </>
         )
 }
