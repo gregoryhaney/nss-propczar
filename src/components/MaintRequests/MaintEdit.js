@@ -8,8 +8,7 @@
 */
 
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
  
 export const EditRequest = () => {
     const history = useHistory()
@@ -20,7 +19,7 @@ export const EditRequest = () => {
     
     
     const getRequestToEdit = () => {
-        fetch(`http://localhost:8080/maintrequests/${id}`)
+        fetch(`http://localhost:8080/maintrequests/${id.id}`)
             .then(res => res.json())
             .then((editRequestArray) => {
                 setRequestToEdit(editRequestArray)
@@ -55,7 +54,7 @@ export const EditRequest = () => {
             },
             body: JSON.stringify(edRequest)
         }
-        return fetch(`http://localhost:8080/maintrequests/${id}`, fetchOption)
+        return fetch(`http://localhost:8080/maintrequests/${id.id}`, fetchOption)
             .then(() => {
                 history.push("/maintRequests")
             })

@@ -8,7 +8,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
 
-
 export const PropertyForm = () => {
     const [users, setUsers] = useState([])
     const [property, updateProperty] = useState({})

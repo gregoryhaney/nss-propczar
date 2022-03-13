@@ -8,11 +8,10 @@
 */
 
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
  
 export const EditUser = () => {
-    const history = useHistory()
+    const history = useHistory()    
     const id = useParams()  
 
     const [ userToEdit, setUserToEdit ] = useState([])
@@ -20,7 +19,7 @@ export const EditUser = () => {
     
     
     const getUserToEdit = () => {
-        fetch(`http://localhost:8080/users/${id}`)
+        fetch(`http://localhost:8080/users/${id.id}`)
             .then(res => res.json())
             .then((editUserArray) => {
                 setUserToEdit(editUserArray)
@@ -53,7 +52,7 @@ export const EditUser = () => {
             },
             body: JSON.stringify(edUser)
         }
-        return fetch(`http://localhost:8080/users/${id}`, fetchOption)
+        return fetch(`http://localhost:8080/users/${id.id}`, fetchOption)
             .then(() => {
                 history.push("/userManagement")
             })

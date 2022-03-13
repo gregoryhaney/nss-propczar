@@ -11,7 +11,6 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { UserForm } from "./UserForm" 
 
 export const UsersList = () => {
     const [users, setUsers] = useState([])

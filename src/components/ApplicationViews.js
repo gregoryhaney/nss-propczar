@@ -43,15 +43,15 @@ export const ApplicationViews = () => {
                 <MaintRequestForm />
             </Route>
 
-            <Route exact path="/EditProperty/:propertyId(\d+)">
+            <Route exact path="/EditProperty/:id(\d+)">
                 <EditProperty />
             </Route>
 
-            <Route exact path="/EditRequest/:requestId(\d+)">
+            <Route exact path="/EditRequest/:id(\d+)">
                 <EditRequest />
             </Route>
 
-            <Route exact path="/EditUser/:userId(\d+)">
+            <Route exact path="/EditUser/:id(\d+)">
                 <EditUser />
             </Route>
 

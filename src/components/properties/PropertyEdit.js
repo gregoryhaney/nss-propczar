@@ -7,8 +7,7 @@
 */
 
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
  
 export const EditProperty = () => {
     const history = useHistory()
@@ -22,7 +21,7 @@ export const EditProperty = () => {
     
     
     const getPropertyToEdit = () => {
-        fetch(`http://localhost:8080/properties/${id}_expand=user`)
+        fetch(`http://localhost:8080/properties/${id.id}?_expand=user`)
             .then(res => res.json())
             .then((editPropertyArray) => {
                 setPropertyToEdit(editPropertyArray)
@@ -65,7 +64,7 @@ export const EditProperty = () => {
             },
             body: JSON.stringify(edProperty)
         }
-        return fetch(`http://localhost:8080/properties/${id}_expand=user`, fetchOption)
+        return fetch(`http://localhost:8080/properties/${id.id}?_expand=user`, fetchOption)
             .then(() => {
                 history.push("/propertyManagement")
             })
