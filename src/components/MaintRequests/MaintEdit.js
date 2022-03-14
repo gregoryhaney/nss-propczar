@@ -57,8 +57,7 @@ export const EditRequest = () => {
         return fetch(`http://localhost:8080/maintrequests/${id.id}`, fetchOption)
             .then(() => {
                 history.push("/maintRequests")
-            })
-        
+            })      
 
         }
 
@@ -154,7 +153,7 @@ export const EditRequest = () => {
         
                     <fieldset>
                         <div className="form-group">
-                            <label htmlFor="occupied">Still Open?</label>
+                            <label htmlFor="openStatus">Check to keep ticket OPEN</label>
                             <input 
                                 onChange={
                                     (evt) => {
@@ -166,7 +165,7 @@ export const EditRequest = () => {
                                 required autoFocus
                                 type="checkbox"
                                 className="form-control"
-                                placeholder="Still Open?"
+                                placeholder="Open when checked"
                                 />
                         </div>
                     </fieldset>

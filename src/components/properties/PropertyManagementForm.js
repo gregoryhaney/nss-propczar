@@ -113,7 +113,7 @@ export const PropertyForm = () => {
                     }}>
                         <option value="0">Select the manager...</option>
                             {users.map(mgruser => {  
-                                if (mgruser.role === "owner" || mgruser.role === "manager") {                              
+                                if ((mgruser.role).toLowerCase() === "owner" || (mgruser.role).toLowerCase() === "manager") {                              
                                 return <option value={mgruser.id}>
                                     {mgruser.name}
                         </option>

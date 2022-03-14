@@ -38,18 +38,23 @@ export const PropertiesList = () => {
                     if (property.occupied === true || property.occupied === 'true') {
                          occupiedStatus = "YES"
                     } else
-                    {  occupiedStatus = "NO"}
+                    {  occupiedStatus = "** NO **"}
+
+                   
+                    
                     return <div key={`property--${property.id}`}>
                         <article className="propertyCard">
                             <section className="propertyImage">
                                 <img src={property.imageURL} />
                             </section>
 
+
+                    
                             <section className="propertyData">
-                                <p> Address: {property.address}<br></br>
-                                    Rent: ${property.rentAmt}<br></br>
-                                    Tenant: {property.user.name}<br></br>
-                                    Property Manager: {property.mgrId.name}<br></br>
+                                <p> Address: {property?.address}<br></br>
+                                    Rent: ${property?.rentAmt}<br></br>
+                                    Tenant: {property?.user.name}<br></br>
+                                    Property Manager: {property.mgrId?.name}<br></br>
                                     Occupied: {occupiedStatus}<br></br>                                                                     
                                 </p>
                             </section>

@@ -45,12 +45,20 @@ export const MaintenanceRequestsList = () => {
         {
             requests.map(
                 (request) => {
+
+                        let open = ""
+                    if (request.openStatus === true || request.openStatus === "true") {
+                        open = " ** YES ** "
+                    } else {
+                        open = " NO "
+                    }
+
                     return <div className="maintrequest" key={`maintrequest--${request.id}`}>
                         <article className="maintRequestCard">                      
                         <p> Address: {request.property.address}<br></br>
                             Title: {request.title}.<br></br>
                             Description: {request.description}<br></br>
-                            Still Open?: {request.openStatus}<br></br>
+                            Still Open? {open}<br></br>
                             When Opened: {request.dateOpened}<br></br>  
                             When Closed: {request.dateClosed}<br></br>
                             Repair Notes: {request.repairNotes}<br></br> 
