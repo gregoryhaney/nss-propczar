@@ -8,6 +8,9 @@ import React, { useEffect, useState } from "react"
 
 export const PropertiesList = () => {
     const [properties, setProperties] = useState([])
+    
+    const [ user, allUsers ] = useState([])
+    const currentLoggedInUserId = parseInt(localStorage.getItem("propczar_user"))
 
     // get all properties from DB via API Fetch
     useEffect(
@@ -26,6 +29,8 @@ export const PropertiesList = () => {
         // TODO
         // to get the value for Property Manager, need 
         // a .filter() or .find()
+
+    
 
     return (
         <>
@@ -54,7 +59,7 @@ export const PropertiesList = () => {
                                 <p> Address: {property?.address}<br></br>
                                     Rent: ${property?.rentAmt}<br></br>
                                     Tenant: {property?.user.name}<br></br>
-                                    Property Manager: {property.mgrId?.name}<br></br>
+                                    Property Manager: {property?.mgrId.name}<br></br>
                                     Occupied: {occupiedStatus}<br></br>                                                                     
                                 </p>
                             </section>
@@ -65,5 +70,9 @@ export const PropertiesList = () => {
         }
         </>
     )
+    
+     
+
 }
+
 

@@ -41,7 +41,7 @@ export const EditRequest = () => {
             description: request.description,
             dateOpened: request.dateOpened,
             dateClosed: request.dateClosed,
-            openStatus: request.openStatus,
+            openStatus: request.openStatus,           // false means ticket is OPEN
             repairNotes: request.repairNotes
         }
 
@@ -83,7 +83,7 @@ export const EditRequest = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="Title..."
+                                placeholder = {requestToEdit.title}
                                 />
                         </div>
                     </fieldset>
@@ -103,7 +103,7 @@ export const EditRequest = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="Detailed description..."
+                                placeholder = {requestToEdit.description}
                                 />
                         </div>
                     </fieldset>
@@ -122,9 +122,9 @@ export const EditRequest = () => {
                                     }
                                 }
                                 required autoFocus
-                                type="date"
+                                type="text"
                                 className="form-control"
-                                placeholder="Date Opened..."
+                                placeholder = {requestToEdit.dateOpened}
                                 />
                         </div>
                     </fieldset>
@@ -142,9 +142,9 @@ export const EditRequest = () => {
                                     }
                                 }
                                 required autoFocus
-                                type="date"
+                                type="text"
                                 className="form-control"
-                                placeholder="Date Closed..."
+                                placeholder = {requestToEdit.dateClosed}
                                 />
                         </div>
                     </fieldset>
@@ -153,7 +153,7 @@ export const EditRequest = () => {
         
                     <fieldset>
                         <div className="form-group">
-                            <label htmlFor="openStatus">Check to keep ticket OPEN</label>
+                            <label htmlFor="openStatus">Check to close ticket</label>
                             <input 
                                 onChange={
                                     (evt) => {
@@ -165,7 +165,7 @@ export const EditRequest = () => {
                                 required autoFocus
                                 type="checkbox"
                                 className="form-control"
-                                placeholder="Open when checked"
+                                placeholder="Closed when checked"
                                 />
                         </div>
                     </fieldset>
@@ -185,7 +185,7 @@ export const EditRequest = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="Repair Notes..."
+                                placeholder = {requestToEdit.repairNotes}
                                 />
                         </div>
                     </fieldset>

@@ -38,7 +38,7 @@ export const MaintRequestForm = () => {
                     propertyId: request.propertyId,
                     dateOpened: today,
                     dateClosed: "",
-                    openStatus: "true",
+                    openStatus: "false",  // false = ticket is open
                     repairNotes: ""
                 }
         

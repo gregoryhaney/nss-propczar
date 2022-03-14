@@ -50,6 +50,7 @@ export const EditProperty = () => {
         const edProperty = {
             mgrId: property.mgrId,
             userId: property.userId,
+            address: property.address,
             rentAmt: property.rentAmt,
             occupied: property.occupied,
             imageURL: property.imageURL
@@ -68,7 +69,6 @@ export const EditProperty = () => {
             .then(() => {
                 history.push("/propertyManagement")
             })
-        
 
         }
 
@@ -83,15 +83,16 @@ export const EditProperty = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="managerAssigned">Manager:</label>
-                        <select defaultValue={'0'}
+                        <select value={propertyToEdit.mgrId}
                             onChange={
                                 (evt) => {
                                     const copy = {...property}
                                     copy.mgrId = parseInt(evt.target.value)
                                     updateProperty(copy)
                         }}>
-                            <option value="0">Select the manager...</option>
-                                {users.map(mgruser => {                                
+                            {users.map(mgruser => { 
+                            <option value="0">{mgruser.name}</option>
+                                                               
                                     if ((mgruser.role).toLowerCase() === "owner" || (mgruser.role).toLowerCase() === "manager") {                              
                                         return <option value={mgruser.id}>
                                             {mgruser.name}
@@ -106,7 +107,7 @@ export const EditProperty = () => {
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="tenant">Tenant:</label>
-                            <select defaultValue={'0'}
+                            <select value = {propertyToEdit.userId}
                                 onChange={
                                     (evt) => {
                                         const copy = {...property}
@@ -126,6 +127,26 @@ export const EditProperty = () => {
                     </fieldset>
 
 
+                    <fieldset>
+                        <div className="form-group">
+                            <label htmlFor="address">Street Address:</label>
+                            <input
+                                onChange={
+                                    (evt) => {
+                                        const copy = {...property}
+                                        copy.address = evt.target.value
+                                        updateProperty(copy)
+                                    }
+                                }
+                                required autoFocus
+                                type="text"
+                                className="form-control"
+                                placeholder = {propertyToEdit.address}
+                                />
+                        </div>
+                    </fieldset>
+
+
 
                     <fieldset>
                         <div className="form-group">
@@ -141,7 +162,7 @@ export const EditProperty = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="Monthly Rent..."
+                                placeholder = {propertyToEdit.rentAmt}
                                 />
                         </div>
                     </fieldset>
@@ -149,7 +170,9 @@ export const EditProperty = () => {
                         
                     <fieldset>
                         <div className="form-group">
-                            <label htmlFor="occupied">Occupied?</label>
+                            
+                            <label htmlFor="occupied">Occupied? </label>
+                        
                             <input 
                                 onChange={
                                     (evt) => {
@@ -161,7 +184,7 @@ export const EditProperty = () => {
                                 required autoFocus
                                 type="checkbox"
                                 className="form-control"
-                                placeholder="Occupied?"
+                                
                                 />
                         </div>
                     </fieldset>
@@ -181,7 +204,7 @@ export const EditProperty = () => {
                             required autoFocus
                             type="text"
                             className="form-control"
-                            placeholder="example: https://images.pexels.com/photos/8484848484848......"
+                            placeholder = {propertyToEdit.imageURL}
                             />
                     </div>
                 </fieldset>

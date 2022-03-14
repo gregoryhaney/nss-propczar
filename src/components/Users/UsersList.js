@@ -28,7 +28,6 @@ export const UsersList = () => {
 
     const history = useHistory()
 
-
     const getUsers = () => {
         fetch("http://localhost:8080/users")
         .then(res => res.json())
@@ -38,7 +37,7 @@ export const UsersList = () => {
     }
 
 
-    // get all users from DB via API Fetch
+    // call FN to get all users from DB via API Fetch
     useEffect(
         () => {
            getUsers()
@@ -83,7 +82,6 @@ export const UsersList = () => {
                         </div>                   
                 }
             ) 
-                   
         }
         </>
     )

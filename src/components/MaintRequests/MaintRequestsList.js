@@ -47,7 +47,7 @@ export const MaintenanceRequestsList = () => {
                 (request) => {
 
                         let open = ""
-                    if (request.openStatus === true || request.openStatus === "true") {
+                    if (request.openStatus === false || request.openStatus === "false") {
                         open = " ** YES ** "
                     } else {
                         open = " NO "

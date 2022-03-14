@@ -27,7 +27,7 @@ export const EditUser = () => {
     }
 
   
-    // get the user from DB via API Fetch
+    // call the FN to get the user from DB via API Fetch
     useEffect(
         () => {
             getUserToEdit()
@@ -56,8 +56,6 @@ export const EditUser = () => {
             .then(() => {
                 history.push("/userManagement")
             })
-        
-
         }
 
 
@@ -66,10 +64,14 @@ export const EditUser = () => {
                 <hr className="rounded"></hr> 
                 <form className="editUserForm">
                 <h2 className="editUserForm__title">Edit an Existing User</h2>
-                  
+                
+
+                
                     <fieldset>
                         <div className="form-group">
+                        
                             <label htmlFor="name">User's Name:</label>
+                       
                             <input
                                 onChange={
                                     (evt) => {
@@ -81,7 +83,7 @@ export const EditUser = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="User's full name..."
+                                placeholder = {userToEdit.name}
                                 />
                         </div>
                     </fieldset>
@@ -101,7 +103,7 @@ export const EditUser = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="User's email address..."
+                                placeholder = {userToEdit.email}
                                 />
                         </div>
                     </fieldset>
@@ -121,7 +123,7 @@ export const EditUser = () => {
                                 required autoFocus
                                 type="text"
                                 className="form-control"
-                                placeholder="User's role (owner, manager, or tenant)..."
+                                placeholder = {userToEdit.role}
                                 />
                         </div>
                     </fieldset> 
