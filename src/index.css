@@ -149,3 +149,28 @@ hr.rounded {
   border-top: 8px solid rgb(20, 88, 26);
   border-radius: 5px;
 }
+
+
+.noteCard {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; */
+  flex-direction: column;
+  background-color: #46a14f;
+  border: 4px solid #000;
+  border-radius: 15px;
+  padding: 8px;
+  margin: 5px;    
+  font-family: "Lato", serif;  
+  color: #000; 
+}
+
+
+.noteCard:hover {
+  background-color: #8a8888;
+  color: #ffffff;
+  transform: scale(1.02);
+  cursor: pointer;
+  transition: all 1s ease;
+}

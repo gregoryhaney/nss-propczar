@@ -8,29 +8,38 @@ import React, { useEffect, useState } from "react"
 
 export const PropertiesList = () => {
     const [properties, setProperties] = useState([])
+    const [ users, setUsers ] = useState([])
     
-    const [ user, allUsers ] = useState([])
+   
     const currentLoggedInUserId = parseInt(localStorage.getItem("propczar_user"))
 
     // get all properties from DB via API Fetch
-    useEffect(
-        () => {
+    const getProperties = () => {    
             fetch("http://localhost:8080/properties?_expand=user")
             .then(res => res.json())
             .then((propertiesArray) => {
                 setProperties(propertiesArray)
             })
+    }
+
+    const getUsers = () => {
+        fetch("http://localhost:8080/users/")
+        .then(res => res.json())
+        .then((usersArray) => {
+            setUsers(usersArray)
+        })
+
+    }
+
+    useEffect(
+        () => {
+           getProperties()
+           getUsers()
         },
         []
     )
 
-// INITIAL FUNCTIONALITY:  Show basic HTML for now
 
-        // TODO
-        // to get the value for Property Manager, need 
-        // a .filter() or .find()
-
-    
 
     return (
         <>
@@ -45,23 +54,31 @@ export const PropertiesList = () => {
                     } else
                     {  occupiedStatus = "** NO **"}
 
-                   
-                    
+                                       
                     return <div key={`property--${property.id}`}>
                         <article className="propertyCard">
                             <section className="propertyImage">
                                 <img src={property.imageURL} />
                             </section>
-
-
-                    
+                  
                             <section className="propertyData">
-                                <p> Address: {property?.address}<br></br>
+                                    Address: {property?.address}<br></br>
                                     Rent: ${property?.rentAmt}<br></br>
                                     Tenant: {property?.user.name}<br></br>
-                                    Property Manager: {property?.mgrId.name}<br></br>
-                                    Occupied: {occupiedStatus}<br></br>                                                                     
-                                </p>
+
+                                    {
+                                    users.map(
+                                    (user) => {
+                                        if (property.mgrId === user.id){
+                                        return <div key={`managerName--${user.id}`}>
+                                            <article className="managerName">
+                                            Property Manager: {user.name}<br></br>
+                                            </article>
+                                        </div>
+                                        }                      
+                                    })                                               
+                                    }                                    
+                                    Occupied: {occupiedStatus}<br></br>                                                           
                             </section>
                         </article> 
                     </div>
@@ -70,9 +87,4 @@ export const PropertiesList = () => {
         }
         </>
     )
-    
-     
-
 }
-
-

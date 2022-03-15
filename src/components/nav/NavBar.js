@@ -52,6 +52,10 @@ export const NavBar = () => {
                 </li>
 
                 <li className="navbar__item">
+                    <Link className="navbar__link" to="/Notes">Mgr's Notes</Link>
+                </li>
+
+                <li className="navbar__item">
                     <Link className="navbar__link" to="#"
                     onClick={
                         () => {
@@ -93,6 +97,10 @@ export const NavBar = () => {
 
                 <li className="navbar__item">
                     <Link className="navbar__link" to="/MaintRequestForm">Create Maintenance Request</Link>
+                </li>
+
+                <li className="navbar__item">
+                    <Link className="navbar__link" to="/Notes">Mgr's Notes</Link>
                 </li>
 
                 <li className="navbar__item">

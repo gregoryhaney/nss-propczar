@@ -29,7 +29,6 @@ export const PropertyForm = () => {
             // after the form is submitted
         const addNewProperty = (evt) => {
             evt.preventDefault()
-
             
                 const newProperty = {
                     userId: property.userId,

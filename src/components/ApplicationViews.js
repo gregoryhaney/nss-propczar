@@ -10,6 +10,9 @@ import { UserForm } from "./Users/UserForm";
 import { EditProperty } from "./Properties/PropertyEdit";
 import { EditRequest } from "./MaintRequests/MaintEdit";
 import { EditUser } from "./Users/UserEdit";
+import { NotesList } from "./Notes/NotesList";
+import { EditNote } from "./Notes/EditNote";
+import { NoteForm } from "./Notes/NotesForm";
 
 export const ApplicationViews = () => {
     return (
@@ -43,6 +46,18 @@ export const ApplicationViews = () => {
                 <MaintRequestForm />
             </Route>
 
+            <Route exact path="/Notes">
+                <NotesList />
+            </Route>
+
+            <Route exact path="/NoteForm">
+                <NoteForm />
+            </Route>
+
+            <Route exact path="/EditNote/:id(\d+)">
+                <EditNote />
+            </Route>
+
             <Route exact path="/EditProperty/:id(\d+)">
                 <EditProperty />
             </Route>
@@ -54,6 +69,8 @@ export const ApplicationViews = () => {
             <Route exact path="/EditUser/:id(\d+)">
                 <EditUser />
             </Route>
+
+            
 
 
         </>

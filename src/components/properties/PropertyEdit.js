@@ -13,7 +13,7 @@ export const EditProperty = () => {
     const history = useHistory()
     const id = useParams()  
 
-    const [ users,setAllUsers ] = useState([])
+    const [ users, setAllUsers ] = useState([])
     const [ propertyToEdit, setPropertyToEdit ] = useState([])
     const [ property, updateProperty ] = useState({
         occupied: false        
