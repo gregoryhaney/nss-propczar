@@ -119,11 +119,12 @@ export const EditNote = () => {
                                     updateNote(copy)
                         }}>
                             {users.map(mgruser => { 
-                            <option value="0">{mgruser.name}</option>
+                                if ((mgruser.role).toLowerCase() === "owner" || (mgruser.role).toLowerCase() === "manager") {
+                                    <option value="0">{mgruser.name}</option>
                                         return <option value={mgruser.id}>
                                             {mgruser.name}
-                                </option>
-                                                        
+                                    </option>
+                                }                       
                                     })}   
                         </select>
                     </div>

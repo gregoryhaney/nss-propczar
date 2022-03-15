@@ -80,14 +80,16 @@ export const NoteForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...note}
-                                copy.mgrId = evt.target.value
+                                copy.mgrId = parseInt(evt.target.value)
                                 updateNote(copy)
                     }}>
                         <option value="0">Choose the manager...</option>
                             {users.map(user => {
-                                return <option key={`users--${user.id}`} value={user.id}>
+                                if ((user.role).toLowerCase() === "owner" || (user.role).toLowerCase() === "manager") {                              
+                                    return <option key={`users--${user.id}`} value={user.id}>
                                     {user.name}
                                     </option>                        
+                                } 
                             })}   
                        </select>
                     </div>
@@ -102,7 +104,7 @@ export const NoteForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...note}
-                                copy.propertyId = evt.target.value
+                                copy.propertyId = parseInt(evt.target.value)
                                 updateNote(copy)
                     }}>
                         <option value="0">Choose the address...</option>
