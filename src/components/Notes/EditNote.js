@@ -85,6 +85,8 @@ export const EditNote = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
                 <form className="editNoteForm">
                 <h2 className="editNoteForm__title">Edit an Existing Manager's Note</h2>
                 

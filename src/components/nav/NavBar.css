@@ -9,3 +9,6 @@
     list-style-type: none;
 }
 
+.logo {
+    justify-content: left;
+  }

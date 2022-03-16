@@ -62,6 +62,8 @@ export const EditUser = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
                 <form className="editUserForm">
                 <h2 className="editUserForm__title">Edit an Existing User</h2>
                 

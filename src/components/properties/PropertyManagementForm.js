@@ -56,6 +56,8 @@ export const PropertyForm = () => {
     return (
         <>
             <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
             <form className="newPropertyForm">
             <h2 className="newPropertyForm__title">Add New Property to the Inventory</h2>
 
@@ -102,7 +104,7 @@ export const PropertyForm = () => {
 
                 <fieldset>
                 <div className="form-group">
-                    <label htmlFor="managerAssigned">Manager:</label>
+                    <label htmlFor="managerAssigned">Manager:</label><br></br>
                     <select defaultValue={'0'}
                         onChange={
                             (evt) => {
@@ -126,7 +128,7 @@ export const PropertyForm = () => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="tenant">Tenant:</label>
+                    <label htmlFor="tenant">Tenant:</label><br></br>
                     <select defaultValue={'0'}
                         onChange={
                             (evt) => {

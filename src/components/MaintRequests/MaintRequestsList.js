@@ -8,7 +8,10 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 
 export const MaintenanceRequestsList = () => {
-    const [requests, setRequests] = useState([])
+    const [ requests, setRequests ] = useState([])
+    const [ users, setUsers ] = useState([])
+    const currentLoggedInUser = parseInt(localStorage.getItem("propczar_user"))
+    let currentUserRole = ""
     const history = useHistory()
 
             const deleteRequest = (id) => {        
@@ -28,23 +31,48 @@ export const MaintenanceRequestsList = () => {
             }
 
 
+            const getUsers = () => {
+                fetch("http://localhost:8080/users")
+                .then(res => res.json())
+                .then((usersArray) => {
+                    setUsers(usersArray)
+                })
+            }
 
             // get all requests from DB via API Fetch
             useEffect(
                 () => {
                 getRequests()
+                getUsers()
                 },
             []
             )   
 
-    
+        // get role of current user to determine if they're an "OWNER"
+        // if so, display all maintenance requests
+
+                for (let user of users) {
+                    if (user.id === currentLoggedInUser) {
+                        currentUserRole = user.role
+                    }
+                }
+
+        /* set conditional to check:
+                1. if the current user and the manager of the property with
+                the request are equal. If so, display the maintenance request
+                2. if the current user has role "OWNER". If so, display all requests
+        */
 
     return (
         <>
-        <hr className="rounded"></hr> 
+                <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr> 
         {
             requests.map(
                 (request) => {
+            
+            if (request.property.mgrId === currentLoggedInUser || (currentUserRole).toLowerCase() === "owner") {
 
                         let open = ""
                     if (request.openStatus === false || request.openStatus === "false") {
@@ -73,7 +101,42 @@ export const MaintenanceRequestsList = () => {
                         </p>
                         </article>
                         </div>                     
-                          }
+                          
+            } else if (request.property.userId === parseInt(currentLoggedInUser)) {                    
+
+                            let open = ""
+                        if (request.openStatus === false || request.openStatus === "false") {
+                            open = " ** YES ** "
+                        } else {
+                            open = " NO "
+                        }
+    
+                        return <div className="maintrequest" key={`maintrequest--${request.id}`}>
+                            <article className="maintRequestCard">                      
+                            <p> Address: {request.property.address}<br></br>
+                                Title: {request.title}.<br></br>
+                                Description: {request.description}<br></br>
+                                Still Open? {open}<br></br>
+                                When Opened: {request.dateOpened}<br></br>  
+                                When Closed: {request.dateClosed}<br></br>
+                                Repair Notes: {request.repairNotes}<br></br> 
+                                <br></br>
+
+                            
+                                <button onClick={() => {
+                            if (request.openStatus === "false" || request.openStatus === false) {
+
+                                    history.push(`EditRequest/${request.id}`)
+                                } else {window.alert("Cannot edit a closed maintenance request")}
+                                }}>Edit Request</button> 
+                             
+
+                            </p>
+                            </article>
+                            </div>                     
+                              }
+                            }
+                        
             )        
         }
         </>

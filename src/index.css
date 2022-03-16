@@ -20,7 +20,7 @@ code {
 button {
   color: #090909; 
   padding: 5px;
-  margin: 3px; 
+  margin: 16px; 
   font-size: 16px; 
   border-radius: 0.5em; 
   background: #e8e8e8; 
@@ -42,12 +42,19 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", serif;
   letter-spacing: 2px;
+  justify-content: center;
   color: #000;
 }
 
 p {
   margin-bottom: 1.5em;
 }
+
+
+.form-group {
+  padding: 15px;
+}
+
 
 .propertyCard {
   /* display: flex;

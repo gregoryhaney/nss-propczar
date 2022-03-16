@@ -47,6 +47,8 @@ export const UserForm = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
                 <form className="newUserForm">     
                 <h2 className="newUserForm__title">New User</h2>
 

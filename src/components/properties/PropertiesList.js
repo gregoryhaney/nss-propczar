@@ -1,8 +1,7 @@
 /*
     The purpose of this component is generate the HTML (JSX)
     that will list the properties. It will be the main
-    view for the home page for the owner view.
-    
+    view for the home page for the owner view.    
 */
 import React, { useEffect, useState } from "react"
 
@@ -12,6 +11,7 @@ export const PropertiesList = () => {
     
    
     const currentLoggedInUserId = parseInt(localStorage.getItem("propczar_user"))
+    let currentUserRole = ""
 
     // get all properties from DB via API Fetch
     const getProperties = () => {    
@@ -39,52 +39,192 @@ export const PropertiesList = () => {
         []
     )
 
+    // determine what the currently logged-in user's role is
 
-
-    return (
-        <>
-        <hr className="rounded"></hr> 
-        {
-            properties.map(
-                (property) => {
-                    
-                    let occupiedStatus = ""
-                    if (property.occupied === true || property.occupied === 'true') {
-                         occupiedStatus = "YES"
-                    } else
-                    {  occupiedStatus = "** NO **"}
-
-                                       
-                    return <div key={`property--${property.id}`}>
-                        <article className="propertyCard">
-                            <section className="propertyImage">
-                                <img src={property.imageURL} />
-                            </section>
-                  
-                            <section className="propertyData">
-                                    Address: {property?.address}<br></br>
-                                    Rent: ${property?.rentAmt}<br></br>
-                                    Tenant: {property?.user.name}<br></br>
-
-                                    {
-                                    users.map(
-                                    (user) => {
-                                        if (property.mgrId === user.id){
-                                        return <div key={`managerName--${user.id}`}>
-                                            <article className="managerName">
-                                            Property Manager: {user.name}<br></br>
-                                            </article>
-                                        </div>
-                                        }                      
-                                    })                                               
-                                    }                                    
-                                    Occupied: {occupiedStatus}<br></br>                                                           
-                            </section>
-                        </article> 
-                    </div>
+            for (const user of users) {
+                if (currentLoggedInUserId === user.id) {
+                    currentUserRole = user.role
                 }
-            )        
-        }
-        </>
-    )
+            }
+          
+/*
+    set of conditionals to display properties based on user.role
+    first IF block is for the role of "OWNER" - display all properties
+    second block is for role "MANAGER" - display restricted to
+            properties for which they're the manager
+    third block if for role "TENANT" - display only their property
+*/
+
+        if ((currentUserRole).toLowerCase() === "owner") {
+            return (
+                <>
+                <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
+                {
+                    properties.map(
+                        (property) => {
+                           
+                            let occupiedStatus = ""
+                            let tenantName = ""
+                            if (property.occupied === true || property.occupied === 'true') {
+                                occupiedStatus = "YES"
+                                tenantName = property.user.name
+                            } else
+                            {  occupiedStatus = "** NO **"
+                            tenantName = "No Tenant"
+                            }
+
+                                            
+                            return <div key={`property--${property.id}`}>
+                                <article className="propertyCard">
+                                    <section className="propertyImage">
+                                        <img src={property.imageURL} />
+                                    </section>
+                        
+                                    <section className="propertyData">
+                                            Address: {property?.address}<br></br>
+                                            Rent: ${property?.rentAmt}<br></br>
+                                            Tenant: {tenantName}<br></br>
+
+                                            {
+                                            users.map(
+                                            (user) => {
+                                                if (property.mgrId === user.id){
+                                                return <div key={`managerName--${user.id}`}>
+                                                    <article className="managerName">
+                                                    Property Manager: {user.name}<br></br>
+                                                    </article>
+                                                </div>
+                                                }                      
+                                            })                                               
+                                            }                                    
+                                            Occupied: {occupiedStatus}<br></br>                                                           
+                                    </section>
+                                </article> 
+                            </div>
+                        }
+                    )        
+                }
+                </>
+            )
+
+
+
+        } else if ((currentUserRole).toLowerCase() === "manager"){
+            return (
+                <>
+                <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
+                {
+                    properties.map(
+                        (property) => {
+                           
+                            let occupiedStatus = ""
+                            let tenantName = ""
+                            if (property.occupied === true || property.occupied === 'true') {
+                                occupiedStatus = "YES"
+                                tenantName = property.user.name
+                            } else
+                            {  occupiedStatus = "** NO **"
+                            tenantName = "No Tenant"
+                            }
+
+
+                            if (property.mgrId === currentLoggedInUserId) {
+
+                                            
+                            return <div key={`property--${property.id}`}>
+                                <article className="propertyCard">
+                                    <section className="propertyImage">
+                                        <img src={property.imageURL} />
+                                    </section>
+                        
+                                    <section className="propertyData">
+                                            Address: {property?.address}<br></br>
+                                            Rent: ${property?.rentAmt}<br></br>
+                                            Tenant: {tenantName}<br></br>
+
+                                            {
+                                            users.map(
+                                            (user) => {
+                                                if (property.mgrId === user.id){
+                                                return <div key={`managerName--${user.id}`}>
+                                                    <article className="managerName">
+                                                    Property Manager: {user.name}<br></br>
+                                                    </article>
+                                                </div>
+                                                }                      
+                                            })                                               
+                                            }                                    
+                                            Occupied: {occupiedStatus}<br></br>                                                           
+                                    </section>
+                                </article> 
+                            </div>
+                            }
+                        }
+                    )        
+                }
+                </>
+            )
+
+
+        } else if ((currentUserRole).toLowerCase() === "tenant") {
+            return (
+                <>
+                <hr className="rounded"></hr>
+                <h1>PropCzar</h1> 
+                <hr className="rounded"></hr>
+                {
+                    properties.map(
+                        (property) => {
+                 
+                            if (property.userId === currentLoggedInUserId) {
+                                  
+                            return <div key={`property--${property.id}`}>
+                                <article className="propertyCard">
+                                    <section className="propertyImage">
+                                        <img src={property.imageURL} />
+                                    </section>
+                        
+                                    <section className="propertyData">
+                                            Your Address: {property?.address}<br></br>
+                                            Your Monthly Rent: ${property?.rentAmt}<br></br>
+                                            Tenant (You): {property.user.name}<br></br>
+
+                                            {
+                                            users.map(
+                                            (user) => {
+                                                if (property.mgrId === user.id){
+                                                return <div key={`managerName--${user.id}`}>
+                                                    <article className="managerName">
+                                                    Your Property Manager: {user.name}<br></br>
+                                                    </article>
+                                                </div>
+                                                }                      
+                                            })                                               
+                                            }                                    
+                                           <br></br>                                                           
+                                    </section>
+                                </article> 
+                            </div>
+                            }
+                        }
+                    )        
+                }
+                </>
+            )
+
+
+
+        } else 
+            return (
+                <>
+                    <hr className="rounded"></hr> 
+                    <article className="unauthorized">                                               
+                        <p> You are an UNAUTHORIZED USER</p>                        
+                    </article>
+                </>         
+            )
 }

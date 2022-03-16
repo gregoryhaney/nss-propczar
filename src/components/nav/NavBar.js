@@ -34,7 +34,9 @@ export const NavBar = () => {
     if (role === "manager") {        
     return (
         <>
+            
             <ul className="navbar">
+
                 <li className="navbar__item active">
                     <Link className="nav__link" to="/">Home</Link>
                 </li>
@@ -45,10 +47,6 @@ export const NavBar = () => {
 
                 <li className="navbar__item">
                     <Link className="navbar__link" to="/maintRequests">Maintenance Requests</Link>
-                </li>
-
-                <li className="navbar__item">
-                    <Link className="navbar__link" to="/MaintRequestForm">Create Maintenance Request</Link>
                 </li>
 
                 <li className="navbar__item">
@@ -96,10 +94,6 @@ export const NavBar = () => {
                 </li>
 
                 <li className="navbar__item">
-                    <Link className="navbar__link" to="/MaintRequestForm">Create Maintenance Request</Link>
-                </li>
-
-                <li className="navbar__item">
                     <Link className="navbar__link" to="/Notes">Mgr's Notes</Link>
                 </li>
 
@@ -125,7 +119,11 @@ export const NavBar = () => {
                 </li>
 
                 <li className="navbar__item">
-                    <Link className="navbar__link" to="/MaintRequestForm">Tenant: Create Maintenance Request</Link>
+                    <Link className="navbar__link" to="/maintRequests">View My Maintenance Requests</Link>
+                </li>
+
+                <li className="navbar__item">
+                    <Link className="navbar__link" to="/MaintRequestForm">Create New Maintenance Request</Link>
                 </li>
 
                 <li className="navbar__item">

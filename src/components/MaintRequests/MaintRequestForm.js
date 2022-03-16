@@ -86,7 +86,9 @@ export const MaintRequestForm = () => {
 
     return (
         <>
-            <hr className="rounded"></hr> 
+                <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr> 
             <form className="newRequestForm">
             <h2 className="newRequestForm__title">Create New Maintenance Request</h2>
 

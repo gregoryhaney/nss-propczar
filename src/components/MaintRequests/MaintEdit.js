@@ -65,6 +65,8 @@ export const EditRequest = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
                 <form className="editRequestForm">
                 <h2 className="editRequestForm__title">Edit an Existing Maintenance Request</h2>
     

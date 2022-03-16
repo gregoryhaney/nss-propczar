@@ -67,6 +67,8 @@ export const NotesList = () => {
     return (
         
         <>
+              <hr className="rounded"></hr> 
+              <h1>PropCzar</h1>
               <hr className="rounded"></hr>
               
                 <h2>Create a New Note</h2>

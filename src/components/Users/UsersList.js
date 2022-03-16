@@ -52,7 +52,9 @@ export const UsersList = () => {
     return (
         
         <>
-              <hr className="rounded"></hr>
+              <hr className="rounded"></hr> 
+                <h1>PropCzar</h1>
+                <hr className="rounded"></hr>
               
                 <h2>Create a New User</h2>
                 <article className="newUser">
