@@ -123,7 +123,7 @@ export const NavBar = () => {
                 </li>
 
                 <li className="navbar__item">
-                    <Link className="navbar__link" to="/MaintRequestForm">Create New Maintenance Request</Link>
+                    <Link className="navbar__link" to="/MaintRequestForm">Create NewMaintenance Request</Link>
                 </li>
 
                 <li className="navbar__item">

@@ -58,9 +58,9 @@ export const MaintenanceRequestsList = () => {
                 }
 
         /* set conditional to check:
-                1. if the current user and the manager of the property with
-                the request are equal. If so, display the maintenance request
-                2. if the current user has role "OWNER". If so, display all requests
+                1. if the current user and property manager with
+                the request are equal...if so, display the maintenance request
+                2. if the current user has role "OWNER"...if so, display all requests
         */
 
     return (
@@ -128,15 +128,13 @@ export const MaintenanceRequestsList = () => {
 
                                     history.push(`EditRequest/${request.id}`)
                                 } else {window.alert("Cannot edit a closed maintenance request")}
-                                }}>Edit Request</button> 
-                             
+                                }}>Edit Request</button>                              
 
                             </p>
                             </article>
                             </div>                     
                               }
-                            }
-                        
+                            }                        
             )        
         }
         </>

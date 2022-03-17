@@ -69,10 +69,6 @@ export const ApplicationViews = () => {
             <Route exact path="/EditUser/:id(\d+)">
                 <EditUser />
             </Route>
-
-            
-
-
         </>
     )
 }

@@ -10,12 +10,9 @@
 
     This is called by the route: "/Notes"
 */
-   
-
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-
 
 export const NotesList = () => {
     const [ notes, setNotes ] = useState([])

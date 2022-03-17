@@ -6,9 +6,9 @@
 import React, { useEffect, useState } from "react"
 
 export const PropertiesList = () => {
-    const [properties, setProperties] = useState([])
+    const [ properties, setProperties ] = useState([])
     const [ users, setUsers ] = useState([])
-    
+    const [ notes, setNotes ] = useState([])    
    
     const currentLoggedInUserId = parseInt(localStorage.getItem("propczar_user"))
     let currentUserRole = ""
@@ -23,10 +23,19 @@ export const PropertiesList = () => {
     }
 
     const getUsers = () => {
-        fetch("http://localhost:8080/users/")
+        fetch("http://localhost:8080/users")
         .then(res => res.json())
         .then((usersArray) => {
             setUsers(usersArray)
+        })
+
+    }
+
+    const getNotes = () => {
+        fetch("http://localhost:8080/notes")
+        .then(res => res.json())
+        .then((notesArray) => {
+            setNotes(notesArray)
         })
 
     }
@@ -35,6 +44,7 @@ export const PropertiesList = () => {
         () => {
            getProperties()
            getUsers()
+           getNotes()
         },
         []
     )
@@ -74,7 +84,7 @@ export const PropertiesList = () => {
                             {  occupiedStatus = "** NO **"
                             tenantName = "No Tenant"
                             }
-
+                            
                                             
                             return <div key={`property--${property.id}`}>
                                 <article className="propertyCard">
@@ -86,20 +96,34 @@ export const PropertiesList = () => {
                                             Address: {property?.address}<br></br>
                                             Rent: ${property?.rentAmt}<br></br>
                                             Tenant: {tenantName}<br></br>
-
+                                            
                                             {
                                             users.map(
                                             (user) => {
                                                 if (property.mgrId === user.id){
-                                                return <div key={`managerName--${user.id}`}>
-                                                    <article className="managerName">
+                                                return <div key={`propertyData--${user.id}`}>
+                                                    <section className="managerName">
                                                     Property Manager: {user.name}<br></br>
-                                                    </article>
+                                                    </section>
                                                 </div>
                                                 }                      
                                             })                                               
-                                            }                                    
-                                            Occupied: {occupiedStatus}<br></br>                                                           
+                                            }
+                                                                                
+                                            Occupied: {occupiedStatus}<br></br>  
+
+                                            {
+                                            notes.map(
+                                            (note) => {
+                                                if (property.id === note.propertyId){
+                                                return <div key={`propertyNote--${note.id}`}>
+                                                    <section className="propNotes">
+                                                    Manager Notes: {note.note} on {note.date}<br></br>
+                                                    </section>
+                                                </div>
+                                                }                      
+                                            })                                               
+                                            }                                                         
                                     </section>
                                 </article> 
                             </div>
@@ -158,7 +182,20 @@ export const PropertiesList = () => {
                                                 }                      
                                             })                                               
                                             }                                    
-                                            Occupied: {occupiedStatus}<br></br>                                                           
+                                            Occupied: {occupiedStatus}<br></br> 
+                                            
+                                            {
+                                            notes.map(
+                                            (note) => {
+                                                if (property.id === note.propertyId){
+                                                return <div key={`propertyNote--${note.id}`}>
+                                                    <section className="propNotes">
+                                                    Manager Notes: {note.note} on {note.date}<br></br>
+                                                    </section>
+                                                </div>
+                                                } 
+                                            })                                               
+                                        }                                                                
                                     </section>
                                 </article> 
                             </div>

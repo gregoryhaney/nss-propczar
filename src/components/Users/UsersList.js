@@ -70,15 +70,19 @@ export const UsersList = () => {
                 (user) => {
                     return <div key={`userObj--${user.id}`}>
                         <article className="userCard">
-                            <p>{user.name} is a property {user.role}.<br></br>
+                            <p>
+                            User Name: {user.name} <br></br>
+                            Role: {user.role}<br></br>
                             <br></br>
                             <button onClick={() => {
                                 history.push(`EditUser/${user.id}`)
                             }}>Edit User</button> 
                             
                             <button onClick={() => {
-                                deleteUser(user.id)                                
+                                deleteUser(user.id) 
+                                history.push(`userManagement/`)                               
                             }}>Delete User</button>
+                                
                             </p>
                         </article>
                         </div>                   

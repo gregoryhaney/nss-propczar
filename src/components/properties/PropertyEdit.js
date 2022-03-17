@@ -78,7 +78,7 @@ export const EditProperty = () => {
                 <hr className="rounded"></hr> 
                 <h1>PropCzar</h1>
                 <hr className="rounded"></hr>
-                <form className="editPropertyForm">
+                <form className="editPropertyForm" key={`property--${property.id}`}>
                 <h2 className="editPropertyForm__title">Edit an Existing Property</h2>
     
 
