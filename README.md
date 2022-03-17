@@ -9,7 +9,18 @@ The idea for PropCzar came from seeing my mother struggle with keeping track of 
 
 ## How this Application Works
 
-### Wireframe Images
+### Screen Shot Images
+![Screen Shot 2022-03-17 at 2 29 33 PM (2)](https://user-images.githubusercontent.com/10354411/158883296-7227c4cc-1156-444c-96c0-e6dff73ce85e.png)
+
+![Screen Shot 2022-03-17 at 2 39 54 PM (2)](https://user-images.githubusercontent.com/10354411/158883333-d1450a8f-5d82-467a-8e30-992807dd9259.png)
+
+![Screen Shot 2022-03-17 at 2 40 10 PM (2)](https://user-images.githubusercontent.com/10354411/158883347-b3cf5db3-bea0-400a-b6cc-ef809a9168fd.png)
+
+![Screen Shot 2022-03-17 at 2 40 25 PM (2)](https://user-images.githubusercontent.com/10354411/158883374-a6ef95c4-b826-4ea9-9b5e-98ec364e2d19.png)
+
+![Screen Shot 2022-03-17 at 2 40 42 PM (2)](https://user-images.githubusercontent.com/10354411/158883390-c395055e-e2e8-4bf4-9d6a-842c356a82a6.png)
+
+![Screen Shot 2022-03-17 at 2 41 06 PM (2)](https://user-images.githubusercontent.com/10354411/158883403-a59adb81-ff8c-47d5-939d-b15191059f0a.png)
 
 
 ### ERD Image
