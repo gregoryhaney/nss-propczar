@@ -7,6 +7,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
+import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
 
 export const PropertyForm = () => {
     const [users, setUsers] = useState([])
@@ -56,7 +57,7 @@ export const PropertyForm = () => {
     return (
         <>
             <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+            <img src={logo} className="App-logo" alt="logo" />
                 <hr className="rounded"></hr>
             <form className="newPropertyForm">
             <h2 className="newPropertyForm__title">Add New Property to the Inventory</h2>

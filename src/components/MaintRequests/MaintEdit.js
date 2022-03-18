@@ -9,6 +9,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
  
 export const EditRequest = () => {
     const history = useHistory()
@@ -65,7 +66,7 @@ export const EditRequest = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
                 <hr className="rounded"></hr>
                 <form className="editRequestForm">
                 <h2 className="editRequestForm__title">Edit an Existing Maintenance Request</h2>
@@ -171,7 +172,9 @@ export const EditRequest = () => {
                                 />
                         </div>
                     </fieldset>
-        
+
+
+
         
                     <fieldset>
                         <div className="form-group">

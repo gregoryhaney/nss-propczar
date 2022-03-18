@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import "./NavBar.css"
 import { useEffect, useState } from "react";
 
+
 export const NavBar = () => {
     const currentLoggedInUser = localStorage.getItem("propczar_user")
     const [ users, setUsers ] = useState([])

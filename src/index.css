@@ -19,7 +19,7 @@ code {
 
 button {
   color: #090909; 
-  padding: 5px;
+  padding: 3px;
   margin: 16px; 
   font-size: 16px; 
   border-radius: 0.5em; 
@@ -63,6 +63,12 @@ hr.rounded {
 .form-group {
   padding: 15px;
 }
+
+.App-logo {
+  max-width: 250px;
+  aspect-ratio: 1 / 1;
+}
+
 
 
 /* ----- Container for Property Card 
@@ -196,3 +202,5 @@ hr.rounded {
             cursor: pointer;
             transition: all 1s ease;
           }
+
+

@@ -10,6 +10,7 @@
 
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
+import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
 
 export const UserForm = () => {   
     
@@ -47,7 +48,7 @@ export const UserForm = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
                 <hr className="rounded"></hr>
                 <form className="newUserForm">     
                 <h2 className="newUserForm__title">New User</h2>

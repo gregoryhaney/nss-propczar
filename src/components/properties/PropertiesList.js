@@ -4,6 +4,7 @@
     view for the home page for the owner view.    
 */
 import React, { useEffect, useState } from "react"
+import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
 
 export const PropertiesList = () => {
     const [ properties, setProperties ] = useState([])
@@ -69,7 +70,8 @@ export const PropertiesList = () => {
             return (
                 <>
                 <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
+                
                 <hr className="rounded"></hr>
                 {
                     properties.map(
@@ -139,7 +141,7 @@ export const PropertiesList = () => {
             return (
                 <>
                 <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
                 <hr className="rounded"></hr>
                 {
                     properties.map(
@@ -211,7 +213,7 @@ export const PropertiesList = () => {
             return (
                 <>
                 <hr className="rounded"></hr>
-                <h1>PropCzar</h1> 
+                <img src={logo} className="App-logo" alt="logo" /> 
                 <hr className="rounded"></hr>
                 {
                     properties.map(

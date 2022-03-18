@@ -7,6 +7,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
+import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
 
 export const MaintRequestForm = () => {
         const [properties, setProperties] = useState([])
@@ -87,7 +88,7 @@ export const MaintRequestForm = () => {
     return (
         <>
                 <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
                 <hr className="rounded"></hr> 
             <form className="newRequestForm">
             <h2 className="newRequestForm__title">Create New Maintenance Request</h2>

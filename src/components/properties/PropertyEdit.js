@@ -8,6 +8,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
  
 export const EditProperty = () => {
     const history = useHistory()
@@ -76,7 +77,7 @@ export const EditProperty = () => {
         return (
             <>
                 <hr className="rounded"></hr> 
-                <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
                 <hr className="rounded"></hr>
                 <form className="editPropertyForm" key={`property--${property.id}`}>
                 <h2 className="editPropertyForm__title">Edit an Existing Property</h2>
