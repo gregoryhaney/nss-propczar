@@ -9,7 +9,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
-import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
+import logo from '../propczar.png'
  
 export const EditUser = () => {
     const history = useHistory()    

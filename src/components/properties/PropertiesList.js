@@ -4,7 +4,7 @@
     view for the home page for the owner view.    
 */
 import React, { useEffect, useState } from "react"
-import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
+import logo from '../propczar.png'
 
 export const PropertiesList = () => {
     const [ properties, setProperties ] = useState([])

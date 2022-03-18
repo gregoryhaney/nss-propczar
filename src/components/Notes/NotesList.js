@@ -13,7 +13,7 @@
 
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import logo from '/Users/gregoryhaney/workspace/propczar/src/propczar.png'
+import logo from '../propczar.png'
 
 export const NotesList = () => {
     const [ notes, setNotes ] = useState([])
