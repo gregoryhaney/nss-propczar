@@ -16,19 +16,41 @@ import logo from '../propczar.png'
 export const UsersList = () => {
     const [users, setUsers] = useState([])
   
-    const deleteUser = (id) => {
-        if (id === 1) {
+
+    // variable to get current user so his/her role can be determined
+        // role determines what properties the user gets to view
+        const currentLoggedInUserId = parseInt(localStorage.getItem("propczar_user"))
+        let currentUserRole = ""
+
+    // iterate through all users until current user is found, then
+        // determine role of currently logged-in user
+        for (const user of users) {
+            if (currentLoggedInUserId === user.id) {
+                currentUserRole = user.role
+            }
+        }
+
+    // FN to perform DELETE API method when a user clicks the DELETE
+    // button for a particular user.
+    // Prevent the deletion of the property owner using conditionals
+    const deleteUser = (role, id) => {
+        if ((role).toLowerCase() === 'owner') {
             window.alert("Cannot delete the Property Owner")
         } else {
             fetch(`http://localhost:8080/users/${id}`, {
             method: "DELETE"
          })
             .then(getUsers())
+            .then(() => {
+                history.push('userManagement/')
+            })
         }
     }
 
     const history = useHistory()
 
+
+    // FN to retrieve all users via API fetch from DB
     const getUsers = () => {
         fetch("http://localhost:8080/users")
         .then(res => res.json())
@@ -45,10 +67,10 @@ export const UsersList = () => {
         },
         []
     )
-            // add button at top of page to CREATE NEW USER
+            // button at top of page to CREATE NEW USER
             // display simple user list
-            // add button under each user to EDIT
-            // add button under each user to DELETE            
+            // button under each user to EDIT
+            // button under each user to DELETE            
 
     return (
         
@@ -80,8 +102,7 @@ export const UsersList = () => {
                             }}>Edit User</button> 
                             
                             <button onClick={() => {
-                                deleteUser(user.id) 
-                                history.push(`userManagement/`)                               
+                                deleteUser(user.role, user.id)                               
                             }}>Delete User</button>
                                 
                             </p>

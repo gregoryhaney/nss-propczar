@@ -21,6 +21,7 @@ export const EditProperty = () => {
     })   
     
     
+    // FN to fetch specific property to edit & expanded user data, based on property ID
     const getPropertyToEdit = () => {
         fetch(`http://localhost:8080/properties/${id.id}?_expand=user`)
             .then(res => res.json())
@@ -29,6 +30,7 @@ export const EditProperty = () => {
         })
     }
 
+    // FN to get all users from DB via API fetch
     const getAllUsers = () => {
         fetch("http://localhost:8080/users")
             .then(res => res.json())
@@ -37,7 +39,7 @@ export const EditProperty = () => {
             })
     }
 
-    // get the property from DB via API Fetch
+    // call the FNs to get the property to edit & all users
     useEffect(
         () => {
             getPropertyToEdit()
@@ -58,7 +60,7 @@ export const EditProperty = () => {
         }
 
         const makeTheUpdate = () => {
-        // PATCH action of edited property object goes here
+        // PATCH action of edited property (edProperty) object goes here
         const fetchOption = {
             method: "PATCH",
             headers: {

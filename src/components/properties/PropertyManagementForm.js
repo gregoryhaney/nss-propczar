@@ -26,7 +26,7 @@ export const PropertyForm = () => {
     )
 
         // build the object that will be sent via API when form is submitted
-            // use the preventDefault to prevent default browser behavior
+            // use the preventDefault FN to prevent default browser behavior
             // after the form is submitted
         const addNewProperty = (evt) => {
             evt.preventDefault()
@@ -63,7 +63,7 @@ export const PropertyForm = () => {
             <h2 className="newPropertyForm__title">Add New Property to the Inventory</h2>
 
                 <fieldset>
-                    <div className="form-group">
+                    <div className="form-group" key={`property--${property.id}`}>
                         <label htmlFor="address">Street Address:</label>
                         <input
                             onChange={

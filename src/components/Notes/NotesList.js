@@ -20,6 +20,8 @@ export const NotesList = () => {
     const [ users, setUsers ] = useState([])
     const history = useHistory()
 
+
+    // FN to perform DELETE method via API on specified 'notes' record
     const deleteNote = (id) => {
         fetch(`http://localhost:8080/notes/${id}`, {
             method: "DELETE"
@@ -28,7 +30,8 @@ export const NotesList = () => {
         }
     
     
-
+    // FN to retrieve all 'notes' and expand on the 'property' of each
+    // in the API fetch from DB
     const getNotes = () => {
         fetch("http://localhost:8080/notes?_expand=property")
         .then(res => res.json())
@@ -37,7 +40,7 @@ export const NotesList = () => {
         })
     }
 
-
+    // FN to retrieve all users from DB
     const getUsers = () => {
         fetch("http://localhost:8080/users/")
         .then(res => res.json())
@@ -49,7 +52,7 @@ export const NotesList = () => {
 
 
 
-    // call FN to get all notes from DB via API Fetch
+    // call FN to get all notes & users from DB via API Fetch
     useEffect(
         () => {
            getNotes()
@@ -57,10 +60,10 @@ export const NotesList = () => {
         },
         []
     )
-            // add button at top of page to CREATE NEW NOTE
+            // button at top of page to CREATE NEW NOTE
             // display simple notes list
-            // add button under each note to EDIT
-            // add button under each note to DELETE            
+            // button under each note to EDIT
+            // button under each note to DELETE            
 
     return (
         

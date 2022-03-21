@@ -12,11 +12,18 @@ import logo from '../propczar.png'
 
 export const NoteForm = () => {   
     
+
+    // variables for state
     const [ note, updateNote ] = useState({})
     const [ properties, setProperties ] = useState([])
     const [ users, setUsers ] = useState([])
+
+
+
     const history = useHistory()
 
+
+    // FN to retrieve properties objects from DB via API fetch
     const getProperties = () => {
         fetch("http://localhost:8080/properties")
         .then(res => res.json())
@@ -25,6 +32,8 @@ export const NoteForm = () => {
         })
     }
 
+
+    // FN to retrieve user objects from DB via API fetch
     const getUsers = () => {
         fetch("http://localhost:8080/users")
         .then(res => res.json())
@@ -33,7 +42,7 @@ export const NoteForm = () => {
         })
     }
 
-
+    // call the FNs to retrieve properties and users from DB
     useEffect(
         () => {
            getProperties()
@@ -43,9 +52,12 @@ export const NoteForm = () => {
     )
 
 
+
         const newNote = (evt) => {
             evt.preventDefault()
 
+
+                // builder for the new note when adding to the DB
                 const buildNewNote = {
                     mgrId: note.mgrId,
                     propertyId: note.propertyId,
@@ -53,7 +65,7 @@ export const NoteForm = () => {
                     note: note.note
                 }
         
-
+                // API Post method to create the new note in DB
                 const fetchOption = {
                     method: "POST",
                     headers: {

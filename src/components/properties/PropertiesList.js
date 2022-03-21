@@ -7,14 +7,17 @@ import React, { useEffect, useState } from "react"
 import logo from '../propczar.png'
 
 export const PropertiesList = () => {
+    // variables for state
     const [ properties, setProperties ] = useState([])
     const [ users, setUsers ] = useState([])
     const [ notes, setNotes ] = useState([])    
    
+    // variable to get current user so his/her role can be determined
+    // role determines what properties the user gets to view
     const currentLoggedInUserId = parseInt(localStorage.getItem("propczar_user"))
     let currentUserRole = ""
 
-    // get all properties from DB via API Fetch
+    // get all properties & expand the user object from DB via API Fetch
     const getProperties = () => {    
             fetch("http://localhost:8080/properties?_expand=user")
             .then(res => res.json())
@@ -23,6 +26,7 @@ export const PropertiesList = () => {
             })
     }
 
+    // FN to get all  'users' objects from the DB via API fetch
     const getUsers = () => {
         fetch("http://localhost:8080/users")
         .then(res => res.json())
@@ -32,6 +36,7 @@ export const PropertiesList = () => {
 
     }
 
+    // FN to get all 'notes' objects from DB via API fetch
     const getNotes = () => {
         fetch("http://localhost:8080/notes")
         .then(res => res.json())
@@ -41,6 +46,7 @@ export const PropertiesList = () => {
 
     }
 
+    // FN to call API fetches for 'properties', 'users', & 'notes'
     useEffect(
         () => {
            getProperties()
@@ -50,8 +56,8 @@ export const PropertiesList = () => {
         []
     )
 
-    // determine what the currently logged-in user's role is
-
+    // iterate through all users until current user is found, then
+    // determine role of currently logged-in user
             for (const user of users) {
                 if (currentLoggedInUserId === user.id) {
                     currentUserRole = user.role
@@ -60,10 +66,10 @@ export const PropertiesList = () => {
           
 /*
     set of conditionals to display properties based on user.role
-    first IF block is for the role of "OWNER" - display all properties
-    second block is for role "MANAGER" - display restricted to
+    a. first IF block is for the role of "OWNER" - display all properties
+    b. second IF block is for role "MANAGER" - display restricted to
             properties for which they're the manager
-    third block if for role "TENANT" - display only their property
+    c. third IF block is for role "TENANT" - display only their property
 */
 
         if ((currentUserRole).toLowerCase() === "owner") {
@@ -158,55 +164,53 @@ export const PropertiesList = () => {
                             }
 
 
-                            if (property.mgrId === currentLoggedInUserId) {
+                            if (property.mgrId === currentLoggedInUserId) {                                            
+                                return <div key={`property--${property.id}`}>
+                                    <article className="propertyCard">
+                                        <section className="propertyImage">
+                                            <img src={property.imageURL} />
+                                        </section>
+                            
+                                        <section className="propertyData">
+                                                Address: {property?.address}<br></br>
+                                                Rent: ${property?.rentAmt}<br></br>
+                                                Tenant: {tenantName}<br></br>
 
-                                            
-                            return <div key={`property--${property.id}`}>
-                                <article className="propertyCard">
-                                    <section className="propertyImage">
-                                        <img src={property.imageURL} />
-                                    </section>
-                        
-                                    <section className="propertyData">
-                                            Address: {property?.address}<br></br>
-                                            Rent: ${property?.rentAmt}<br></br>
-                                            Tenant: {tenantName}<br></br>
-
-                                            {
-                                            users.map(
-                                            (user) => {
-                                                if (property.mgrId === user.id){
-                                                return <div key={`managerName--${user.id}`}>
-                                                    <article className="managerName">
-                                                    Property Manager: {user.name}<br></br>
-                                                    </article>
-                                                </div>
-                                                }                      
-                                            })                                               
-                                            }                                    
-                                            Occupied: {occupiedStatus}<br></br> 
-                                            
-                                            {
-                                            notes.map(
-                                            (note) => {
-                                                if (property.id === note.propertyId){
-                                                return <div key={`propertyNote--${note.id}`}>
-                                                    <section className="propNotes">
-                                                    Manager Notes: {note.note} on {note.date}<br></br>
-                                                    </section>
-                                                </div>
-                                                } 
-                                            })                                               
-                                        }                                                                
-                                    </section>
-                                </article> 
-                            </div>
+                                                {
+                                                users.map(
+                                                (user) => {
+                                                    if (property.mgrId === user.id){
+                                                    return <div key={`managerName--${user.id}`}>
+                                                        <article className="managerName">
+                                                        Property Manager: {user.name}<br></br>
+                                                        </article>
+                                                    </div>
+                                                    }                      
+                                                })                                               
+                                                }                                    
+                                                Occupied: {occupiedStatus}<br></br> 
+                                                
+                                                {
+                                                notes.map(
+                                                (note) => {
+                                                    if (property.id === note.propertyId){
+                                                    return <div key={`propertyNote--${note.id}`}>
+                                                        <section className="propNotes">
+                                                        Manager Notes: {note.note} on {note.date}<br></br>
+                                                        </section>
+                                                    </div>
+                                                    } 
+                                                })                                               
+                                            }                                                                
+                                        </section>
+                                    </article> 
+                                </div>
+                                }
                             }
-                        }
-                    )        
-                }
-                </>
-            )
+                        )        
+                    }
+                    </>
+                )
 
 
         } else if ((currentUserRole).toLowerCase() === "tenant") {

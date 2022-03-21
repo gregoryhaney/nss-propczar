@@ -10,15 +10,18 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import logo from '../propczar.png'
+
  
 export const EditUser = () => {
     const history = useHistory()    
     const id = useParams()  
 
+    // variables to hold state
     const [ userToEdit, setUserToEdit ] = useState([])
     const [ user, updateUser ] = useState({})   
     
     
+    // FN to fetch the 'users' record for the specific user based on ID
     const getUserToEdit = () => {
         fetch(`http://localhost:8080/users/${id.id}`)
             .then(res => res.json())
@@ -45,7 +48,7 @@ export const EditUser = () => {
         }
 
         const makeTheUpdate = () => {
-        // POST action of edited property object goes here
+        // POST action of edited property object (edUser) goes here
         const fetchOption = {
             method: "PATCH",
             headers: {

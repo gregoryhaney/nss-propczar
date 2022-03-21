@@ -4,6 +4,14 @@ import "./NavBar.css"
 import { useEffect, useState } from "react";
 
 
+/*
+    the FN "NavBar" is broken into conditionals to check the
+    current user's role. If the user role is 'manager', select
+    LINK items are listed. If the user role is 'owner', all 
+    LINK items are listed. Otherwise, only a couple of the LINK items
+    get listed.  
+*/
+
 export const NavBar = () => {
     const currentLoggedInUser = localStorage.getItem("propczar_user")
     const [ users, setUsers ] = useState([])

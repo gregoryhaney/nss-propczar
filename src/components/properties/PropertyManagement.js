@@ -2,7 +2,7 @@
     The purposes of this component are:
         1. list each property's street address with 
         two action buttons: "Edit Property" && "Delete Property"
-        2. perform the DELETE operations in
+        2. perform the DELETE operation in
         the DB if the "Delete Property" button
         is clicked on the route "/propertyManagement". 
         3. pass the user to the route "/EditProperty"
@@ -25,6 +25,8 @@ export const PropertyManagement = () => {
                 })
                     .then(getProperties())
             }
+
+            
     // FN to fetch all properties to display to the user    
             const getProperties = () => {
             

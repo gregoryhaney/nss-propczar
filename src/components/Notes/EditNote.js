@@ -15,11 +15,14 @@ export const EditNote = () => {
     const history = useHistory()    
     const id = useParams()  
 
+
+    // variables to hold state
     const [ noteToEdit, setNoteToEdit ] = useState([])
     const [ note, updateNote ] = useState({})
     const [ properties, setAllProperties ] = useState([])  
     const [ users, setAllUsers ] = useState([])
     
+    // FN to fetch the specific note for editing
     const getNoteToEdit = () => {
         fetch(`http://localhost:8080/notes/${id.id}?_expand=property`)
             .then(res => res.json())
@@ -28,7 +31,7 @@ export const EditNote = () => {
         })
     }
 
-
+    // FN to retrieve all property records
     const getProperties = () => {
         fetch(`http://localhost:8080/properties`)
             .then(res => res.json())
@@ -37,6 +40,7 @@ export const EditNote = () => {
         })
     }
 
+    // FN to retrieve all user records
     const getUsers = () => {
         fetch(`http://localhost:8080/users`)
             .then(res => res.json())
@@ -48,7 +52,10 @@ export const EditNote = () => {
 
 
   
-    // call the FN to get the user from DB via API Fetch
+    // call the FNs to get data from DB via API Fetch
+        // get the specific note to edit
+        // get all the properties
+        // get all the users
     useEffect(
         () => {
             getNoteToEdit()
@@ -59,7 +66,7 @@ export const EditNote = () => {
     )
 
         
-        // edUser object builder goes here
+        // edNote object builder goes here
         const edNote = {
             date: note.date,
             propertyId: note.propertyId,
@@ -67,6 +74,7 @@ export const EditNote = () => {
             note: note.note
         }
 
+            // FN to make the PATCH API call for the record to update in DB
         const makeTheUpdate = () => {
         // POST action of edited property object goes here
         const fetchOption = {
