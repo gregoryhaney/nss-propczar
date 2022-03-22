@@ -101,9 +101,9 @@ export const PropertiesList = () => {
                                     </section>
                         
                                     <section className="propertyData">
-                                            Address: {property?.address}<br></br>
-                                            Rent: ${property?.rentAmt}<br></br>
-                                            Tenant: {tenantName}<br></br>
+                                            Address: {property?.address}<br></br><br></br>
+                                            Rent: ${property?.rentAmt}<br></br><br></br>
+                                            Tenant: {tenantName}<br></br><br></br>
                                             
                                             {
                                             users.map(
@@ -111,14 +111,14 @@ export const PropertiesList = () => {
                                                 if (property.mgrId === user.id){
                                                 return <div key={`propertyData--${user.id}`}>
                                                     <section className="managerName">
-                                                    Property Manager: {user.name}<br></br>
+                                                    Property Manager: {user.name}<br></br><br></br>
                                                     </section>
                                                 </div>
                                                 }                      
                                             })                                               
                                             }
                                                                                 
-                                            Occupied: {occupiedStatus}<br></br>  
+                                            Occupied: {occupiedStatus}<br></br><br></br>  
 
                                             {
                                             notes.map(
@@ -126,7 +126,7 @@ export const PropertiesList = () => {
                                                 if (property.id === note.propertyId){
                                                 return <div key={`propertyNote--${note.id}`}>
                                                     <section className="propNotes">
-                                                    Manager Notes: {note.note} on {note.date}<br></br>
+                                                    Manager Notes: {note.note} on {note.date}<br></br><br></br>
                                                     </section>
                                                 </div>
                                                 }                      
