@@ -1,9 +1,9 @@
 /*
     The purpose of this component is generate the HTML (JSX)
     that will list the maintenance requests.
-    This is called by route: "/maintRequests"
-    
+    This is called by route: "/maintRequests"    
 */
+
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import logo from '../propczar.png'
@@ -15,6 +15,7 @@ export const MaintenanceRequestsList = () => {
     let currentUserRole = ""
     const history = useHistory()
 
+            // FN to perform the DELETE API method for the specific maint request
             const deleteRequest = (id) => {        
                 fetch(`http://localhost:8080/maintrequests/${id}`, {
                 method: "DELETE"
@@ -22,6 +23,7 @@ export const MaintenanceRequestsList = () => {
                 .then(getRequests())
             }
 
+            // FN to perform API fetch to get all maint requests form DB
             const getRequests = () => {
 
                 fetch("http://localhost:8080/maintrequests?_expand=property")
@@ -31,7 +33,7 @@ export const MaintenanceRequestsList = () => {
                 })
             }
 
-
+            // FN to perform API fetch to get all users from the DB
             const getUsers = () => {
                 fetch("http://localhost:8080/users")
                 .then(res => res.json())
@@ -40,7 +42,7 @@ export const MaintenanceRequestsList = () => {
                 })
             }
 
-            // get all requests from DB via API Fetch
+            // call the FNs that get all requests and users from DB via API Fetch
             useEffect(
                 () => {
                 getRequests()

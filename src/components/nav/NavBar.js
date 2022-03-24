@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import "./NavBar.css"
 import { useEffect, useState } from "react";
 
-
 /*
     the FN "NavBar" is broken into conditionals to check the
     current user's role. If the user role is 'manager', select

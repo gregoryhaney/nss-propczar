@@ -49,8 +49,6 @@ export const EditNote = () => {
         })
     }
 
-
-
   
     // call the FNs to get data from DB via API Fetch
         // get the specific note to edit
@@ -66,7 +64,7 @@ export const EditNote = () => {
     )
 
         
-        // edNote object builder goes here
+        // 'edNote' object builder goes here
         const edNote = {
             date: note.date,
             propertyId: note.propertyId,

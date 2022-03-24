@@ -1,7 +1,7 @@
 /*
     The purpose of this component is generate the HTML (JSX)
     that will list the properties. It will be the main
-    view for the home page for the owner view.    
+    view for the home page for the users.    
 */
 import React, { useEffect, useState } from "react"
 import logo from '../propczar.png'

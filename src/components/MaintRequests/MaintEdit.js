@@ -152,28 +152,24 @@ export const EditRequest = () => {
                         </div>
                     </fieldset>
 
-       
-        
+                    
                     <fieldset>
                         <div className="form-group">
-                            <label htmlFor="openStatus">Check to close ticket</label>
-                            <input 
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...request}
-                                        copy.openStatus = evt.target.checked
-                                        updateRequest(copy)
-                                    }
-                                } 
-                                required autoFocus
-                                type="checkbox"
-                                className="form-control"
-                                placeholder="Closed when checked"
-                                />
+                           <label htmlFor="openStatus">Request Ticket Status:</label><br></br>
+                               <select className="openStatus" id="openStatus" 
+                                value={requestToEdit.openStatus}
+                             onChange={
+                                (evt) => {
+                                    const copy = {...request}
+                                    copy.openStatus = evt.target.value
+                                    updateRequest(copy)
+                                }
+                            }>
+                            <option value="true">Closed</option>
+                            <option value="false">Open</option>      
+                             </select>
                         </div>
                     </fieldset>
-
-
 
         
                     <fieldset>
@@ -204,3 +200,4 @@ export const EditRequest = () => {
                 </>
         )
 }
+

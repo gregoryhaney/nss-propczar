@@ -152,20 +152,20 @@ export const PropertyForm = () => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="occupied">Occupied?</label>
-                    <input 
+                    <label htmlFor="occupied">Is Property Occupied?</label><br></br>
+                    <select defaultValue={'0'}
                         onChange={
                             (evt) => {
                                 const copy = {...property}
-                                copy.occupied = evt.target.checked
+                                copy.occupied = evt.target.value
                                 updateProperty(copy)
                             }
-                        } 
-                        required autoFocus
-                        type="checkbox"
-                        className="form-control"
-                        placeholder="Occupied?"
-                        />
+                        }>
+                        <option value="0">It is...</option>
+                        <option value="true">Occupied</option>
+                        <option value="false">Unoccupied</option>
+                        
+                    </select>
                 </div>
             </fieldset>
 
@@ -198,3 +198,26 @@ export const PropertyForm = () => {
     )
 
 }
+
+
+/*
+<fieldset>
+                <div className="form-group">
+                    <label htmlFor="occupied">Occupied?</label>
+                    <input 
+                        onChange={
+                            (evt) => {
+                                const copy = {...property}
+                                copy.occupied = evt.target.checked
+                                updateProperty(copy)
+                            }
+                        } 
+                        required autoFocus
+                        type="checkbox"
+                        className="form-control"
+                        placeholder="Occupied?"
+                        />
+                </div>
+            </fieldset>
+
+*/

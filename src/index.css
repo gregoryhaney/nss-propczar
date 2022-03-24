@@ -4,7 +4,7 @@
 /*--------Typography -------------------------------*/
 
 body {
-  background-color: #a6d8ad;
+  background-color: #a6d8ad !important;
   color: #000;
   margin: 3px;
   font-family: "Lato", sans-serif;
@@ -28,6 +28,7 @@ button {
   box-shadow: 4px 4px 8px #c5c5c5, 
               -4px -5px 8px #8a8888; 
 }
+
 
 input,
 select,
@@ -61,6 +62,7 @@ hr.rounded {
 /* ------ to create or edit  ------- */ 
 .form-group {
   padding: 15px;
+  max-width: 450px;
 }
 
 .App-logo {

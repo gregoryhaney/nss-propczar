@@ -5,6 +5,7 @@ import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import "../index.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export const PropCzar = () => (

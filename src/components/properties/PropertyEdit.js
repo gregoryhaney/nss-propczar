@@ -16,9 +16,7 @@ export const EditProperty = () => {
 
     const [ users, setAllUsers ] = useState([])
     const [ propertyToEdit, setPropertyToEdit ] = useState([])
-    const [ property, updateProperty ] = useState({
-        occupied: false        
-    })   
+    const [ property, updateProperty ] = useState({})   
     
     
     // FN to fetch specific property to edit & expanded user data, based on property ID
@@ -172,29 +170,29 @@ export const EditProperty = () => {
                         </div>
                     </fieldset>
     
-                        
+
+
+
                     <fieldset>
                         <div className="form-group">
-                            
-                            <label htmlFor="occupied">Occupied? </label>
-                        
-                            <input 
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...property}
-                                        copy.occupied = evt.target.checked
-                                        updateProperty(copy)
-                                    }
-                                } 
-                                required autoFocus
-                                type="checkbox"
-                                className="form-control"
-                                
-                                />
+                           <label htmlFor="occupied">Occupied Status</label><br></br>
+                               <select className="occupied" id="occupied" 
+                                value={propertyToEdit.occupied}
+                             onChange={
+                                (evt) => {
+                                    const copy = {...property}
+                                    copy.occupied = evt.target.value
+                                    updateProperty(copy)
+                                }
+                            }>
+                            <option value="true">Occupied</option>
+                            <option value="false">Unoccupied</option>      
+                             </select>
                         </div>
                     </fieldset>
-        
-        
+
+
+
                     <fieldset>
                     <div className="form-group">
                         <label htmlFor="imageURL">URL for Image:</label>
