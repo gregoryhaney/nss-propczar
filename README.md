@@ -9,6 +9,10 @@ The idea for PropCzar came from seeing my mother struggle with keeping track of 
 
 ## How this Application Works
 
+### Video Demonstration / Walk-Thorough
+
+https://drive.google.com/file/d/1ZBsccN6ksuDFVZyUTkL0uE5PHH_dg1Vd/view?usp=sharing
+
 ### Screen Shot Images
 
 1. Homepage for the role of 'owner', which has all capabilities (full NavBar). 'Manager' role has slightly fewer options that 'owner'. 'Tenant' has very limited capabilities and NavBar options available.
