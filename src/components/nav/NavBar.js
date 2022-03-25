@@ -39,7 +39,7 @@ export const NavBar = () => {
                 }
             }
 
-    if (role === "manager") {        
+    if (role.toLowerCase() === "manager") {        
     return (
         <>
             
@@ -76,7 +76,7 @@ export const NavBar = () => {
 
     } else 
         
-    if (role === "owner") { 
+    if (role.toLowerCase() === "owner") { 
     return ( 
         <> 
             <ul className="navbar">
@@ -131,7 +131,7 @@ export const NavBar = () => {
                 </li>
 
                 <li className="navbar__item">
-                    <Link className="navbar__link" to="/MaintRequestForm">Create NewMaintenance Request</Link>
+                    <Link className="navbar__link" to="/MaintRequestForm">Create New Maintenance Request</Link>
                 </li>
 
                 <li className="navbar__item">

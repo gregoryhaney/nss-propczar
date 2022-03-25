@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./Login.css"
+import logo from '../propczar.png'
 
 export const Login = () => {
     const [email, set] = useState("")
@@ -36,9 +37,11 @@ export const Login = () => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>PropCzar</h1>
+                <img src={logo} className="App-logo" alt="logo" />
+                    <br></br>
                     <h2>Please sign in</h2>
                     <fieldset>
+                        <br></br>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"
                             onChange={evt => set(evt.target.value)}
@@ -47,9 +50,11 @@ export const Login = () => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
+                        <br></br>
                         <button type="submit">
                             Sign in
                         </button>
+                        
                     </fieldset>
                 </form>
             </section>

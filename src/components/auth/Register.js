@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./Login.css"
+import logo from '../propczar.png'
 
 export const Register = (props) => {
     const [user, setUser] = useState({})
@@ -54,7 +55,8 @@ export const Register = (props) => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for PropCzar</h1>
+            <img src={logo} className="App-logo" alt="logo" />
+                <h1 className="h3 mb-3 font-weight-normal">Please Register</h1>
                 <fieldset>
                     <label htmlFor="name"> Full Name </label>
                     <input onChange={updateUser}
@@ -63,10 +65,12 @@ export const Register = (props) => {
                 </fieldset>
                 
                 <fieldset>
+                    <br></br>
                     <label htmlFor="email"> Email address </label>
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
+                    <br></br>
                     <button type="submit"> Register </button>
                 </fieldset>
             </form>
