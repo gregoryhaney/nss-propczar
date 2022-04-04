@@ -60,12 +60,12 @@ export const PropertyManagement = () => {
                         <article className="userCard">
                         <p>{property.address} <br></br>
                         <br></br>
-                        <button onClick={() => {
+                        <button className="button" onClick={() => {
                                
                                 history.push(`EditProperty/${property.id}`)
                             }}>Edit Property</button> 
 
-                        <button onClick={() => {
+                        <button className="button" onClick={() => {
                                 deleteProperty(property.id)                            
                             }}>Delete Property</button>
                         </p>

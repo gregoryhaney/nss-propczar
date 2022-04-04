@@ -81,7 +81,7 @@ export const UsersList = () => {
               
                 <h2>Create a New User</h2>
                 <article className="newUser">
-                    <button onClick={() => {                
+                    <button className="button" onClick={() => {                
                         history.push(`UserForm`)
                             }}>Create New User</button> 
                             <br></br> 
@@ -97,11 +97,11 @@ export const UsersList = () => {
                             User Name: {user.name} <br></br>
                             Role: {user.role}<br></br>
                             <br></br>
-                            <button onClick={() => {
+                            <button className="button" onClick={() => {
                                 history.push(`EditUser/${user.id}`)
                             }}>Edit User</button> 
                             
-                            <button onClick={() => {
+                            <button className="button" onClick={() => {
                                 deleteUser(user.role, user.id)                               
                             }}>Delete User</button>
                                 

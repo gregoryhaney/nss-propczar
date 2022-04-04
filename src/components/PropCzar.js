@@ -4,8 +4,8 @@ import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-import "../index.css"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "../index.css"
 
 
 export const PropCzar = () => (

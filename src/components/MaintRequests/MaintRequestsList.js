@@ -94,11 +94,11 @@ export const MaintenanceRequestsList = () => {
                             When Closed: {request.dateClosed}<br></br>
                             Repair Notes: {request.repairNotes}<br></br> 
                             <br></br>
-                            <button onClick={() => {
+                            <button className="button" onClick={() => {
                                 history.push(`EditRequest/${request.id}`)
                             }}>Edit Request</button> 
 
-                            <button onClick={() => {
+                            <button className="button" onClick={() => {
                                 deleteRequest(request.id)                            
                             }}>Delete Request</button>
                         </p>
@@ -126,7 +126,7 @@ export const MaintenanceRequestsList = () => {
                                 <br></br>
 
                             
-                                <button onClick={() => {
+                                <button className="button" onClick={() => {
                             if (request.openStatus === "false" || request.openStatus === false) {
 
                                     history.push(`EditRequest/${request.id}`)

@@ -74,7 +74,7 @@ export const NotesList = () => {
               
                 <h2>Create a New Note</h2>
                 <article className="newNote">
-                    <button onClick={() => {                
+                    <button className="button" onClick={() => {                
                         history.push(`NoteForm`)
                             }}>Create New Note</button> 
                             <br></br> 
@@ -105,11 +105,11 @@ export const NotesList = () => {
                 }
 
                             <br></br>
-                            <button onClick={() => {
+                            <button className="button" onClick={() => {
                                 history.push(`EditNote/${note.id}`)
                             }}>Edit Note</button> 
                             
-                            <button onClick={() => {
+                            <button className="button" onClick={() => {
                                 deleteNote(note.id)                                
                             }}>Delete Note</button>
                             
