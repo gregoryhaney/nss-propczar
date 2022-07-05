@@ -1,6 +1,6 @@
 /*
     The purpose of this component is to perform 
-    an update to the DB for a maintenance request.
+    a DB update for a maintenance request.
     The FN "EditRequests" is called when the user clicks
     the "Edit Request" button from the "MaintRequests.js"
     component. 

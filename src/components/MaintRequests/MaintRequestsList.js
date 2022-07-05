@@ -15,7 +15,8 @@ export const MaintenanceRequestsList = () => {
     let currentUserRole = ""
     const history = useHistory()
 
-            // FN to perform the DELETE API method for the specific maint request
+            // FN to perform the DELETE API method for the specific 
+            // maintenance request based on the ID
             const deleteRequest = (id) => {        
                 fetch(`http://localhost:8080/maintrequests/${id}`, {
                 method: "DELETE"
@@ -23,7 +24,7 @@ export const MaintenanceRequestsList = () => {
                 .then(getRequests())
             }
 
-            // FN to perform API fetch to get all maint requests form DB
+            // FN to perform API fetch to get all maintenance requests from the DB
             const getRequests = () => {
 
                 fetch("http://localhost:8080/maintrequests?_expand=property")
@@ -42,7 +43,7 @@ export const MaintenanceRequestsList = () => {
                 })
             }
 
-            // call the FNs that get all requests and users from DB via API Fetch
+            // call the above FNs that get all requests and users from DB via API Fetch
             useEffect(
                 () => {
                 getRequests()
@@ -51,7 +52,7 @@ export const MaintenanceRequestsList = () => {
             []
             )   
 
-        // get role of current user to determine if they're an "OWNER"
+        // get role of current user to determine if they're an "OWNER".
         // if so, display all maintenance requests
 
                 for (let user of users) {
@@ -62,7 +63,7 @@ export const MaintenanceRequestsList = () => {
 
         /* set conditional to check:
                 1. if the current user and property manager with
-                the request are equal...if so, display the maintenance request
+                   the request are equal...if so, display the maintenance request
                 2. if the current user has role "OWNER"...if so, display all requests
         */
 

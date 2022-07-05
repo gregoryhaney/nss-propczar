@@ -54,13 +54,13 @@ export const MaintRequestForm = () => {
                 .then(() => {
 
                     // use the useHistory hook to take user back
-                    // to the list of maint requests after the update to the DB
+                    // to the list of maint requests after DB is updated.
                     // this is done with the 'history' variable that was set above
                     history.push("/maintRequests")
                 })
             }
         
-            // fetch the property to use in the form's dropdown
+            // fetch the property to use in the form's dropdown.
             // this fetch is qualified with the variable "currentLoggedInUser",
             // which is set to the value from localStorage for "propczar_user".
             // it shows only the user's address in the dropdown to prevent

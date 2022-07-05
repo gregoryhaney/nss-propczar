@@ -135,7 +135,7 @@ export const EditUser = () => {
                     </fieldset> 
         
                     <br></br>
-                    <button className="button" onClick={makeTheUpdate} className="btn btn-primary">
+                    <button onClick={makeTheUpdate} className="btn btn-primary">
                         Save Changes
                     </button>
                 </form>
